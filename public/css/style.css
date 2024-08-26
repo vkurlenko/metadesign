@@ -5,9 +5,26 @@
  ------------------------------------ 
  ====================================*/
 
+@font-face {
+	font-family: 'dinpro_condensedregular';
+	src: url('../fonts/dinpro_condensedregular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
 
+@font-face {
+	font-family: 'dinpro_condensedbold';
+	src: url('../fonts/dinpro_condensedbold.otf') format('opentype');
+	font-weight: bold;
+	font-style: normal;
+}
 
-
+@font-face {
+	font-family: 'dinpro_condensedmedium';
+	src: url('../fonts/dinpro_condensedmedium.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
 
 /*----------------------------------------*/
 /* Template default CSS
@@ -15,7 +32,7 @@
 html,
 body {
 	height: 100%;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'dinpro_condensedregular', 'Roboto', sans-serif;
 }
 
 h1,
@@ -24,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-	color: #222222;
+	color: #333;
 	margin: 0;
 	margin-bottom: 10px;
 	font-weight: 700;
@@ -44,6 +61,7 @@ h1 span {
 
 h2 {
 	font-size: 36px;
+	font-family: 'dinpro_condensedbold', 'Roboto', sans-serif;
 }
 
 h3 {
@@ -56,9 +74,9 @@ h4 {
 }
 
 p {
-	font-size: 15px;
-	color: #727272;
-	line-height: 2;
+	font-size: 38px;
+	color: #333;
+	line-height: 1.2;
 }
 
 img {
@@ -457,6 +475,7 @@ ol {
 	letter-spacing: 1px;
 	margin-top: 30px;
 	margin-right: 50px;
+	font-size: 1.5rem;
 }
 
 .nav-switch {
@@ -479,9 +498,9 @@ ol {
 .nav-menu ul li a {
 	display: inline-block;
 	padding: 40px 10px 5px;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	margin-right: 30px;
-	font-size: 14px;
+	font-size: 28px;
 	color: #fff;
 	font-weight: 500;
 	position: relative;
@@ -549,6 +568,7 @@ ol {
 }
 
 .hero-right-text {
+	font-size: 2rem;
 	position: absolute;
 	right: 140px;
 	-webkit-transform: rotate(-90deg);
@@ -557,7 +577,7 @@ ol {
 	-webkit-transform-origin: right center;
 	    -ms-transform-origin: right center;
 	        transform-origin: right center;
-	bottom: 60%;
+	bottom: 65%;
 	z-index: 30;
 	color: #fff;
 	text-transform: uppercase;
@@ -664,7 +684,7 @@ ol {
 
 .slide-content h2 {
 	color: #fff;
-	font-size: 80px;
+	font-size: 86px;
 	line-height: 80px;
 }
 
