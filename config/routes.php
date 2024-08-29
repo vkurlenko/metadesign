@@ -7,18 +7,6 @@ return function (RoutingConfigurator $routes): void {
         ->controller([PageController::class, 'index'])
     ;
 
-    $routes->add('about', '/about')
-        ->controller([PageController::class, 'about'])
-    ;
-
-    $routes->add('contact', '/contact')
-        ->controller([PageController::class, 'contact'])
-    ;
-
-    $routes->add('service', '/service')
-        ->controller([PageController::class, 'service'])
-    ;
-
     $routes->add('portfolio', '/portfolio')
         ->controller([PageController::class, 'portfolio'])
     ;

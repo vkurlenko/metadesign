@@ -15,27 +15,6 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/about')]
-    public function about(): Response
-    {
-        return $this->render('about.html.twig', [
-        ]);
-    }
-
-    #[Route('/contact')]
-    public function contact(): Response
-    {
-        return $this->render('contact.html.twig', [
-        ]);
-    }
-
-    #[Route('/service')]
-    public function service(): Response
-    {
-        return $this->render('service.html.twig', [
-        ]);
-    }
-
     #[Route('/portfolio')]
     public function portfolio(): Response
     {

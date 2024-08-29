@@ -34,6 +34,14 @@ $(window).on('load', function() {
 		event.preventDefault();
 	});
 
+	$('.nav-menu a').on('click', function () {
+		let attr = $('.nav-menu').attr('style');
+
+		if (typeof attr !== typeof undefined && attr !== false) {
+			$('.nav-menu').fadeOut();
+		}
+	})
+
 
 
 	/*------------------
@@ -50,14 +58,14 @@ $(window).on('load', function() {
 	--------------------*/
 	var hero_s = $(".hero-slider");
     hero_s.owlCarousel({
-        loop: true,
+        loop: false,
         margin: 0,
         nav: true,
         items: 1,
         dots: false,
         animateOut: 'fadeOutRight',
     	animateIn: 'fadeInLeft',
-        navText: ['<i class="fa fa-long-arrow-left"></i> PREV', 'NEXT<i class="fa fa-long-arrow-right"></i>'],
+        navText: ['<i class="fa fa-long-arrow-left"></i> <!--PREV-->', 'рассчитать<i class="fa fa-long-arrow-right"></i>'],
         smartSpeed: 1200,
         autoHeight: false,
         //autoplay: true,
@@ -88,7 +96,7 @@ $(window).on('load', function() {
 		nav: true,
 		loop: true,
 		margin:20,
-		navText: ['<i class="fa fa-long-arrow-left"></i> PREV', 'NEXT<i class="fa fa-long-arrow-right"></i>'],
+		navText: ['<i class="fa fa-long-arrow-left"></i> PREV', 'NEXT2<i class="fa fa-long-arrow-right"></i>'],
 		responsive:{
 			0:{
 				items:1,
