@@ -1,16 +1,141 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="en">
+<head>
+    <title>{% block title %}MetaDesign{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="shortcut icon"/>
 
-        {% block javascripts %}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Header section start -->
+<header class="header-area">
+    <a href="/" class="logo-area">
+        <img src="img/logo_lime_127.png" alt="">
+    </a>
+    <div class="nav-switch">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="phone-number">+675 334 567 223</div>
+    <nav class="nav-menu">
+        <ul>
+            <li class="active"><a href="/">Главная</a></li>
+            <li><a href="/#about">О нас</a></li>
+            <li><a href="/portfolio">Портфолио</a></li>
+            <li><a href="/#services">Услуги</a></li>
+            <li><a href="/#contact">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- Header section end -->
+
+{% block body %}
+    <div id="content">
+        {% block content %}
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    </div>
+{% endblock %}
+
+<!-- Footer section start -->
+<footer class="footer-section">
+    <a id="contact"></a>
+    <div class="footer-social">
+        <div class="social-links">
+            <a href="#"><i class="fa fa-pinterest"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 offset-lg-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="footer-item">
+                            <ul>
+                                <li><a href="/">Главная</a></li>
+                                <li><a href="#about">О нас</a></li>
+                                <li><a href="/portfolio">Портфолио</a></li>
+                                <li><a href="#services">Услуги</a></li>
+                                <li><a href="#contact">Контакты</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footer-item">
+{#                            <ul>#}
+{#                                <li><a href="#">Terms & Conditions</a></li>#}
+{#                                <li><a href="#">FAQ</a></li>#}
+{#                                <li><a href="#">Help Desk</a></li>#}
+{#                                <li><a href="#">Job Aplications</a></li>#}
+{#                                <li><a href="#">Site Map</a></li>#}
+{#                            </ul>#}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footer-item">
+{#                            <ul>#}
+{#                                <li><a href="#">Privacy</a></li>#}
+{#                                <li><a href="#">Contact us</a></li>#}
+{#                                <li><a href="#">Newsletter</a></li>#}
+{#                                <li><a href="#">Clients Testimonials</a></li>#}
+{#                                <li><a href="#">FAQ</a></li>#}
+{#                            </ul>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+{#    <div class="copyright">#}
+{#        Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.#}
+{#        <br>#}
+{#        This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>#}
+{#    </div>#}
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+</footer>
+<!-- Footer section end -->
+
+
+
+
+<!--====== Javascripts & Jquery ======-->
+<script src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/jquery.owl-filter.js') }}"></script>
+<script src="{{ asset('js/magnific-popup.min.js') }}"></script>
+<script src="{{ asset('js/circle-progress.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+</body>
 </html>

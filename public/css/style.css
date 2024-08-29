@@ -460,10 +460,12 @@ ol {
 /*  Header CSS
 /*----------------------------------------*/
 .header-area {
-	position: absolute;
+	/*position: absolute;*/
+	position: fixed;
 	width: 100%;
 	top: 0;
 	z-index: 50;
+	background: #00000075;
 }
 
 .logo-area {
@@ -1838,6 +1840,7 @@ ol {
 
 /* Tablet :768px. */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+
 	.logo-area {
 		padding: 20px 40px 30px;
 	}
