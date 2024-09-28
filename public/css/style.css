@@ -2071,8 +2071,8 @@ ol {
 		height: auto;
 	}
 	.hero-slider .hero-slide-item {
-		padding: 150px 0;
-		height: auto;
+		padding: 100px 0;
+		height: 100vh;
 	}
 	.slide-content h2 {
 		font-size: 60px;
@@ -2162,6 +2162,11 @@ ol {
 	}
 	.footer-item {
 		margin-bottom: 40px;
+	}
+
+	.slide-content.calculator-wrapper {
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 }
 
