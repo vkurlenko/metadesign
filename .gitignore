@@ -8,4 +8,5 @@
 /var/
 /vendor/
 /temp/
+/.idea/*
 ###< symfony/framework-bundle ###
