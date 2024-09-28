@@ -33,6 +33,7 @@ html,
 body {
 	height: 100%;
 	font-family: 'dinpro_condensedregular', 'Roboto', sans-serif;
+	font-size: 16px;
 }
 
 h1,
@@ -487,6 +488,15 @@ ol {
 	font-size: 1.5rem;
 }
 
+.phone-number a {
+	color: #222222 !important;
+}
+
+.phone-number .fa {
+	background: none;
+	margin-left: .5rem;
+}
+
 .nav-switch {
 	display: none;
 }
@@ -616,7 +626,7 @@ ol {
 .hero-slider .owl-nav .owl-next {
 	display: inline-block;
 	margin-right: 30px;
-	font-size: 14px;
+	font-size: 2rem;
 	font-weight: 700;
 	color: #fff;
 	letter-spacing: 1px;
@@ -678,7 +688,69 @@ ol {
 	transition: all 0.6s;
 }
 
-.slide-content:after {
+.slide-content.calculator-wrapper {
+	margin: 50px 1rem;
+	padding-left: 1rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	position: relative;
+	opacity: 0;
+	-webkit-transition: all 0.6s;
+	-o-transition: all 0.6s;
+	transition: all 0.6s;
+}
+
+.form-calculator > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card,
+.card-title,
+.modal p {
+	font-size: 1.5rem;
+}
+
+.card .form-control, .card .input-group-text {
+	font-size: 1.25rem;
+}
+
+.btn {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.btn-primary {
+	background: #baff00;
+	color: #222222;
+	border-color: #baff00;
+}
+
+.btn-primary:hover {
+	color: #222222;
+	background-color: #88ac2c;
+	border-color: #88ac2c;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+	color: #222222;
+	background-color: #88ac2c;
+	border-color: #88ac2c;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+	background-color: #baff00;
+}
+
+.custom-control-label::before,
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+	top: .5rem;
+}
+
+.owl-item:first-child .slide-content:after {
 	position: absolute;
 	content: "";
 	height: calc(100% + 50px);
@@ -2134,5 +2206,16 @@ ol {
 	}
 	.projects-slider {
 		padding: 0 15px;
+	}
+
+	.card,
+	.card-title,
+	.modal p {
+		font-size: 1.25rem;
+	}
+
+	.card .form-control,
+	.card .input-group-text {
+		font-size: 1rem;
 	}
 }

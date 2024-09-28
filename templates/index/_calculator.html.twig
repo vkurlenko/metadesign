@@ -1,0 +1,99 @@
+<form id="form-calculator" class="form-calculator">
+    <div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Заголовок для калькулятора</h5>
+
+                <!-- Тип недвижимости -->
+                <div class="form-group mb-3">
+                    <label for="realty-type" class="form-label">Какой у вас тип недвижимости?</label>
+                    <select class="form-control"
+                            name="realty-type"
+                            id="realty-type"
+                            aria-label="Тип недвижимости?"
+                            required
+                    >
+                        <option value=""></option>
+                        <option value="commerce">Коммерческое помещение</option>
+                        <option value="flat">Квартира</option>
+                        <option value="house">Дом</option>
+                    </select>
+                </div>
+
+                <!-- Тип помещения -->
+                <div class="form-group mb-3">
+                    <label for="room-type" class="form-label">Какой у вас тип помещения?</label>
+                    <select class="form-control"
+                            name="room-type"
+                            id="room-type"
+                            aria-label="Тип помещения"
+                            required
+                    >
+                        <option value=""></option>
+                        <option value="new">Новостройка</option>
+                        <option value="secondary">Вторичное жилье</option>
+                    </select>
+                </div>
+
+                <!-- Площадь помещения -->
+                <label for="area-square" class="form-label">Какая площадь помещения?</label>
+                <div class="input-group mb-3">
+                    <input type="number"
+                           class="form-control"
+                           id="area-square"
+                           name="area-square"
+                           aria-label="Площадь помещения"
+                           placeholder="Площадь помещения"
+                           required
+                    >
+                    <div class="input-group-append">
+                        <span class="input-group-text">м<sup>2</sup></span>
+                    </div>
+                </div>
+
+                <!-- Класс ремонта -->
+                <div class="form-group mb-3">
+                    <label for="repair-type" class="form-label">Какой класс ремонта вы планируете?</label>
+                    <select class="form-control"
+                            name="repair-type"
+                            id="repair-type"
+                            aria-label="Класс ремонта"
+                            required
+                    >
+                        <option value=""></option>
+                        <option value="comfort">Комфорт</option>
+                        <option value="business">Бизнес</option>
+                        <option value="premium">Премиум</option>
+                    </select>
+                </div>
+
+                <!-- Номер телефона -->
+                <label for="phone" class="form-label">Оставьте свой номер телефона, чтобы увидеть итоговую стоимость</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+7</span>
+                    </div>
+                    <input type="text"
+                           class="form-control"
+                           id="phone"
+                           name="phone"
+                           aria-label="Номер телефона"
+                           placeholder="Номер телефона"
+                    >
+                </div>
+
+                <!-- Согласие -->
+                <div class="custom-control custom-checkbox mb-3" >
+                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+                    <label class="custom-control-label" for="customControlValidation1"
+                    >Согласен с условиями обработки персональных данных</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Рассчитать стоимость</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
