@@ -712,7 +712,7 @@ ol {
 
 .card,
 .card-title,
-.modal p {
+.modal p, .modal-title {
 	font-size: 1.5rem;
 }
 
@@ -1868,10 +1868,6 @@ ol {
 	width: 20%;
 }
 
-.modal-dialog {
-	margin: 1rem;
-}
-
 /* ===========================
   Responsive
 ==============================*/
@@ -2234,13 +2230,14 @@ ol {
 		font-size: 1.25rem;
 	}
 
-	.card-title {
+	.card-title, .modal-title {
 		font-size: 1.5rem;
 	}
 
 	.card .form-control,
 	.card .input-group-text {
 		font-size: 1rem;
+		font-weight: 700;
 	}
 
 	.card label {

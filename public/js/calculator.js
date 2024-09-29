@@ -3,6 +3,7 @@ $(document).ready(function () {
     const inputPhone = $('#phone');
     const modal = $('#myModal');
     const modalBody = modal.find('.modal-body p');
+    const responseLoader = $('.response-loader');
 
     applyInputMask (inputPhone);
 
@@ -69,6 +70,8 @@ $(document).ready(function () {
     function sendForm () {
         let formData = new FormData(form[0]);
 
+        modal.modal('show');
+
         $.ajax({
             url: '/api/calculate',
             method: 'post',
@@ -76,9 +79,14 @@ $(document).ready(function () {
             contentType: false,
             dataType: 'json',
             data: formData,
-            success: function(data){
-                modalBody.html(data.message);
-                modal.modal('show');
+            success: function(data) {
+
+                // Имитируем долгую загрузку рассчета.
+                setTimeout(() => {
+                    responseLoader.hide();
+
+                    modalBody.html(data.message);
+                }, 1000);
 
                 formReset();
             },
@@ -102,7 +110,6 @@ $(document).ready(function () {
                 }
 
                 modalBody.html(message);
-                modal.modal('show');
             }
         });
     }
