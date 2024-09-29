@@ -603,6 +603,10 @@ ol {
 	letter-spacing: 20px;
 }
 
+.hero-slider {
+	background-image: url("/img/bg.jpg");
+}
+
 .hero-slider .hero-slide-item {
 	width: 100%;
 	height: 960px;
@@ -689,7 +693,7 @@ ol {
 }
 
 .slide-content.calculator-wrapper {
-	margin: 50px 1rem;
+	margin: 50px 0;
 	padding-left: 1rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
@@ -1864,6 +1868,10 @@ ol {
 	width: 20%;
 }
 
+.modal-dialog {
+	margin: 1rem;
+}
+
 /* ===========================
   Responsive
 ==============================*/
@@ -2168,6 +2176,10 @@ ol {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
+
+	.mobile-hidden {
+		display: none;
+	}
 }
 
 /* small mobile :320px. */
@@ -2213,14 +2225,36 @@ ol {
 		padding: 0 15px;
 	}
 
+	.card {
+		width: 100%;
+	}
+
 	.card,
-	.card-title,
 	.modal p {
 		font-size: 1.25rem;
+	}
+
+	.card-title {
+		font-size: 1.5rem;
 	}
 
 	.card .form-control,
 	.card .input-group-text {
 		font-size: 1rem;
+	}
+
+	.card label {
+		margin-bottom: 0;
+		line-height: normal;
+		font-size: 1rem;
+	}
+
+	.form-calculator .btn[type='submit'] {
+		width: 100%;
+	}
+
+	.hero-slider .owl-nav .owl-prev,
+	.hero-slider .owl-nav .owl-next {
+		font-size: 1.5rem;
 	}
 }
