@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -49,9 +50,13 @@ class CalculateController extends AbstractController
         $data = $request->getPayload()->all();
 
         if ($this->isValid($data)) {
+            $result = $this->calculate($data);
+
             $message = $request->getPayload()->get('realty-type') == self::REALTY_TYPE_FLAT
                 ? self::MESSAGE_SUCCESS_FLAT
                 : self::MESSAGE_SUCCESS_COMMERCE;
+
+            $message = $this->replace($message, $data, $result);
 
             $message = nl2br($message);
 
@@ -80,5 +85,15 @@ class CalculateController extends AbstractController
     private function isValid($data): bool
     {
         return true;
+    }
+
+    private function calculate(array $data): float
+    {
+        return 0;
+    }
+
+    private function replace(string $message, array $data, float $result): string
+    {
+            return str_replace(array_keys($data), array_values($data), $message);
     }
 }
