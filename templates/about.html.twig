@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}О нас{% endblock %}
+
+{% block content %}
+
+
+    <!-- Page header section start -->
+    <section class="page-header-section set-bg section-about" data-setbg="/img/bg_MD_2.jpg">
+        <div style="">
+            <div class="container">
+                <h1 class="header-title">О нас</h1>
+            </div>
+        </div>
+    </section>
+    <!-- Page header section end -->
+
+
+    <!-- Page section start -->
+    <div class="page-section" >
+        <div class="container">
+            <p class="pt-5">
+                Мы - команда профессионалов, которая объединяет страсть к дизайну с уважением к вашим желаниям.
+            </p>
+
+            <p>
+                <span>За 2023 год мы успешно завершили 46 объектов под ключ.</span>
+            </p>
+
+            <p>
+                <span>Более 20 ЖК Москвы в нашем портфолио: CityBay, Alia, Архитектор, Ilove, Welton Towers, Level Причальный,
+                    PrimePark, ВТБ Арена Парк и др.</span>
+            </p>
+
+            <p>
+                <span>Сотрудничаем более чем со 100 партнёрами: Profil Doors, Стильные кухни, Laparet, KeramaMarazzi,
+                    KuppersBuch, Bork, Asko, ЦентрСвет, OdeonLight, Maytoni, BoConcept, Grohe, Omoikiri, Finex и др.</span>
+            </p>
+
+            <p class="pt-5">
+                Наши ориентиры:
+                <ul>
+                    <li><strong>Целостность процесса.</strong> Мы предлагаем полный цикл услуг — от первоначальной концепции
+                        до финального заселения. Это позволяет нам контролировать каждую деталь и гарантировать высокое
+                        качество на каждом этапе. Мы верим, что внимание к мелочам определяет общий результат;
+                    </li>
+                    <li><strong>Партнёрство на каждом этапе.</strong> Мы ценим доверие и открытость в отношениях с
+                        клиентами. На каждом этапе проекта мы поддерживаем прозрачное общение, чтобы вы всегда знали, что
+                        происходит, и чувствовали себя частью процесса;
+                    </li>
+                    <li><strong>Эмоциональная связь.</strong> Мы понимаем, что дом — это место, где создаются воспоминания и
+                        формируются эмоции. Наша задача — создать атмосферу, которая будет вдохновлять, успокаивать и
+                        радовать вас каждый день.
+                    </li>
+                </ul>
+            </p>
+
+            <p class="pt-5">
+                Наша ответственность, профессионализм и внимание к деталям приведут вас к индивидуальному дизайну и идеальному ремонту!
+            </p>
+
+        </div>
+
+        <div class="container">
+            <div class="grid zoom-gallery">
+                <div class="grid-sizer"></div>
+
+                {% for IMAGE in IMAGES %}
+
+                <div class="grid-item">
+                    <a href="{{ IMAGE.src }}" title="test">
+                        <img src="{{ IMAGE.src }}" alt="text" >
+                    </a>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+
+        {#        <div class="container">#}
+{#            <!-- portfolio filter menu -->#}
+{#            <ul class="portfolio-filter">#}
+{#                <li class="filter" data-filter="*">All</li>#}
+{#                <li class="filter" data-filter=".photo">Photography</li>#}
+{#                <li class="filter" data-filter=".design">Design</li>#}
+{#                <li class="filter" data-filter=".iden">Identity</li>#}
+{#                <li class="filter" data-filter=".corp">Corporate</li>#}
+{#                <li class="filter" data-filter=".uxui">UI/UX</li>#}
+{#            </ul>#}
+{#        </div>#}
+{#        <!-- portfolio items -->#}
+{#        <div class="portfolio-warp spad">#}
+{#            <div id="portfolio">#}
+{#                <div class="grid-sizer"></div>#}
+{#                <!-- portfolio item -->#}
+{#                <div class="grid-item set-bg grid-wide photo" data-setbg="img/portfolio/1.jpg"><a class="img-popup" href="img/portfolio/1.jpg"></a></div>#}
+{#                <!-- portfolio item -->#}
+{#                <div class="grid-item set-bg design corp" data-setbg="img/portfolio/2.jpg"><a class="img-popup" href="img/portfolio/2.jpg"></a></div>#}
+{#                <!-- portfolio item -->#}
+{#                <div class="grid-item set-bg iden photo uxui" data-setbg="img/portfolio/3.jpg"><a class="img-popup" href="img/portfolio/3.jpg"></a></div>#}
+{#                <!-- portfolio item -->#}
+{#                <div class="grid-item set-bg corp design" data-setbg="img/portfolio/4.jpg"><a class="img-popup" href="img/portfolio/4.jpg"></a></div>#}
+{#                <!-- portfolio item -->#}
+{#                <div class="grid-item set-bg uxui iden" data-setbg="img/portfolio/5.jpg"><a class="img-popup" href="img/portfolio/5.jpg"></a></div>#}
+{#                <!-- portfolio item -->#}
+{#                <div class="grid-item set-bg grid-long design corp" data-setbg="img/portfolio/6.jpg"><a class="img-popup" href="img/portfolio/6.jpg"></a></div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="container">#}
+{#            <div class="pagination">#}
+{#                <a href="#">01</a>#}
+{#                <a href="" class="active">02</a>#}
+{#                <a href="">03</a>#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+    <!-- Page section end -->
+
+    <style>
+        .grid-sizer,
+        .grid-item {
+            width: 30%;
+            padding: .5rem
+        }
+
+        @media only screen and (max-width: 479px) {
+            .grid-sizer,
+            .grid-item {
+                width: 50%;
+                padding: .2rem
+            }
+        }
+
+        .image-source-link {
+            color: #98C3D1;
+        }
+
+        .mfp-with-zoom .mfp-container,
+        .mfp-with-zoom.mfp-bg {
+            opacity: 0;
+            -webkit-backface-visibility: hidden;
+            /* ideally, transition speed should match zoom duration */
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+        .mfp-with-zoom.mfp-ready .mfp-container {
+            opacity: 1;
+        }
+        .mfp-with-zoom.mfp-ready.mfp-bg {
+            opacity: 0.8;
+        }
+
+        .mfp-with-zoom.mfp-removing .mfp-container,
+        .mfp-with-zoom.mfp-removing.mfp-bg {
+            opacity: 0;
+        }
+    </style>
+
+{% endblock %}
