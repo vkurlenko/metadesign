@@ -33,7 +33,7 @@ class ProjectService
      */
     private function getData(): array
     {
-        // Здесь лежит массив проектов.
+        // В projects.json лежит массив проектов.
         $data = file_get_contents('projects.json');
         $projects = json_decode($data, true);
 
@@ -41,6 +41,8 @@ class ProjectService
     }
 
     /**
+     * Считывает все файлы из директории проекта $project['dir']
+     *
      * @param $project
      * @return array|string[]
      */
@@ -49,8 +51,8 @@ class ProjectService
         $dir = $project['dir'];
         $files = [];
 
-        if (is_dir($_SERVER['DOCUMENT_ROOT'] . $dir)) {
-            $fileNames = scandir($_SERVER['DOCUMENT_ROOT'] . $dir);
+        if (is_dir(getcwd() . $dir)) {
+            $fileNames = scandir(getcwd() . $dir);
 
             $fileNames = array_filter($fileNames, function ($fileName) {
                 return ! in_array($fileName, ['.', '..']);
