@@ -19,8 +19,9 @@ class PageController extends AbstractController
 
     private ProjectController $projectController;
 
-    public function __construct(ProjectService $projectService)
+    public function __construct()
     {
+        $projectService = new ProjectService();
         $this->projectController = new ProjectController($projectService);
     }
 
