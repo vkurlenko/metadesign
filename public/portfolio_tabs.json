@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "group": "projects",
+      "id": "architect",
+      "img": "img/projects/architect/1.jpg",
+      "title": "ЖК Архитектор",
+      "text": "75 кв.м."
+    },
+    {
+      "group": "building",
+      "id": "building",
+      "img": "img/building/1.jpg",
+      "title": "Стройка",
+      "text": "текст о стройке"
+    },
+    {
+      "group": "projects",
+      "id": "forst",
+      "img": "img/projects/forst/1.jpg",
+      "title": "ЖК Forst",
+      "text": "27,5 кв.м."
+    },
+    {
+      "group": "projects",
+      "id": "kit",
+      "img": "img/projects/kit/1.jpg",
+      "title": "ЖК КИТ",
+      "text": "60 кв.м."
+    },
+    {
+      "group": "projects",
+      "id": "odintsovo",
+      "img": "img/projects/odintsovo/1.jpg",
+      "title": "Одинцово",
+      "text": "38 кв.м."
+    },
+    {
+      "group": "projects",
+      "id": "putilkovo",
+      "img": "img/projects/putilkovo/1.jpg",
+      "title": "ЖК Большое Путилково",
+      "text": "44 кв.м."
+    },
+    {
+      "group": "projects",
+      "id": "sky_view",
+      "img": "img/projects/sky_view/1.jpg",
+      "title": "ЖК Sky View",
+      "text": "94,2 кв.м."
+    },
+    {
+      "group": "projects",
+      "id": "tricolor_107",
+      "img": "img/projects/tricolor_107/1.jpg",
+      "title": "Жк Триколор",
+      "text": "107 кв.м."
+    },
+    {
+      "group": "projects",
+      "id": "tricolor_128",
+      "img": "img/projects/tricolor_128/1.jpg",
+      "title": "Жк Триколор",
+      "text": "128 кв.м."
+    }
+  ]
+}

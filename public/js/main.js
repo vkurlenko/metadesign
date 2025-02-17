@@ -26,6 +26,43 @@ $(window).on('load', function() {
 
 (function($) {
 
+	$('.grid').masonry({
+		// options
+		itemSelector: '.grid-item',
+		columnWidth: '.grid-sizer',
+		percentPosition: true
+	});
+
+	$('.zoom-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		closeOnContentClick: false,
+		closeBtnInside: false,
+		mainClass: 'mfp-with-zoom mfp-img-mobile',
+
+		// If you enable allowHTMLInTemplate -
+		// make sure your HTML attributes are sanitized if they can be created by a non-admin user
+		allowHTMLInTemplate: true,
+		image: {
+			verticalFit: true,
+			titleSrc: function(item) {
+				return item.el.attr('title');
+			}
+		},
+
+		gallery: {
+			enabled: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300, // don't foget to change the duration also in CSS
+			opener: function(element) {
+				return element.find('img');
+			}
+		}
+
+	});
+
 	/*------------------
 		Navigation
 	--------------------*/
@@ -61,7 +98,7 @@ $(window).on('load', function() {
     hero_s.owlCarousel({
         loop: false,
         margin: 0,
-        nav: true,
+        nav: false,
         items: 1,
         dots: false,
         animateOut: 'fadeOutRight',
@@ -75,22 +112,22 @@ $(window).on('load', function() {
         //autoplay: true,
         mouseDrag: false,
         onInitialized: function() {
-        	let a = this.items().length;
-
-        	if (a < 10) {
-            	$("#snh-1").html("<span>01" + " / </span>0" + a);
-       		} else {
-       			$("#snh-1").html("<span>01" + " / </span>" + a);
-       		}
+        	// let a = this.items().length;
+			//
+        	// if (a < 10) {
+            // 	$("#snh-1").html("<span>01" + " / </span>0" + a);
+       		// } else {
+       		// 	$("#snh-1").html("<span>01" + " / </span>" + a);
+       		// }
         }
     }).on("changed.owl.carousel", function(a) {
-        var b = --a.item.index, a = a.item.count;
-
-        if (a < 10) {
-        	$("#snh-1").html("<span>0" + ( 1 > b ? b + a : b > a ? b - a : b) + " / </span>0" + a);
-    	} else {
-    		$("#snh-1").html("<span> "+ (1 > b ? b + a : b > a ? b - a : b) + " / </span>" + a);
-    	}
+        // var b = --a.item.index, a = a.item.count;
+		//
+        // if (a < 10) {
+        // 	$("#snh-1").html("<span>0" + ( 1 > b ? b + a : b > a ? b - a : b) + " / </span>0" + a);
+    	// } else {
+    	// 	$("#snh-1").html("<span> "+ (1 > b ? b + a : b > a ? b - a : b) + " / </span>" + a);
+    	// }
     });
 
 
@@ -102,7 +139,7 @@ $(window).on('load', function() {
 		nav: true,
 		loop: true,
 		margin:20,
-		navText: ['<i class="fa fa-long-arrow-left"></i> PREV', 'NEXT<i class="fa fa-long-arrow-right"></i>'],
+		navText: ['<i class="fa fa-long-arrow-left"></i> ', '<i class="fa fa-long-arrow-right"></i>'],
 		responsive:{
 			0:{
 				items:1,

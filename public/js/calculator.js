@@ -1,9 +1,26 @@
 $(document).ready(function () {
-    const form = $('#form-calculator');
-    const inputPhone = $('#phone');
-    const modal = $('#myModal');
-    const modalBody = modal.find('.modal-body p');
-    const responseLoader = $('.response-loader');
+    const form = $('#form-calculator'),
+        inputPhone = $('#phone'),
+        modalCalculator = $('#myModalCalculator'),
+        modalResult = $('#modalResult'),
+        modalBody = modalResult.find('.modal-body p'),
+        responseLoader = $('.response-loader'),
+        btnModalCalculator = $('#btnModalCalculator'),
+        btnSubmit = $('#btnSubmit'),
+        btnRepeat = $('#btnRepeat')
+    ;
+
+    btnModalCalculator.on('click', function () {
+        modalCalculator.modal('show');
+    });
+
+    btnSubmit.on('click', function () {
+        form.submit();
+    })
+
+    btnRepeat.on('click', function () {
+        modalCalculator.modal('show');
+    });
 
     applyInputMask (inputPhone);
 
@@ -12,6 +29,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         if (isFormValid()) {
+            modalCalculator.modal('hide');
             sendForm();
         }
     })
@@ -70,7 +88,7 @@ $(document).ready(function () {
     function sendForm () {
         let formData = new FormData(form[0]);
 
-        modal.modal('show');
+        modalResult.modal('show');
 
         $.ajax({
             url: '/api/calculate',
@@ -81,7 +99,7 @@ $(document).ready(function () {
             data: formData,
             success: function(data) {
 
-                // Имитируем долгую загрузку рассчета.
+                // Имитируем долгую загрузку расчета.
                 setTimeout(() => {
                     responseLoader.hide();
 

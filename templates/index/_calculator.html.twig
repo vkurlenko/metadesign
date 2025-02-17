@@ -1,8 +1,8 @@
 <form id="form-calculator" class="form-calculator">
     <div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title mb-4">Калькулятор стоимости ремонта</h5>
+        <div class="card border-0">
+            <div class="card-body p-0">
+{#                <h5 class="card-title mb-4">Калькулятор стоимости ремонта</h5>#}
 
                 <!-- Тип недвижимости -->
                 <div class="form-group mb-4">
@@ -44,6 +44,7 @@
                            name="area-square"
                            aria-label="Площадь помещения"
                            placeholder="Площадь помещения"
+                           min="1"
                            required
                     >
                     <div class="input-group-append">
@@ -91,7 +92,7 @@
                     >Согласен с условиями обработки персональных данных</label>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Рассчитать стоимость</button>
+{#                <button type="submit" class="btn btn-primary">Рассчитать стоимость</button>#}
             </div>
         </div>
     </div>

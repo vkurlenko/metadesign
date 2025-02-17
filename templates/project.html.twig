@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Проект{% endblock %}
+
+{% block content %}
+
+    <!-- Page header section start -->
+    <section class="page-header-section set-bg section-about" data-setbg="/img/bg_MD_3.jpg">
+        <div style="">
+            <div class="container">
+                <h1 class="header-title">{{ PROJECT.name }}</h1>
+            </div>
+        </div>
+    </section>
+    <!-- Page header section end -->
+
+
+    <!-- Page section start -->
+    <div class="page-section" >
+        <div class="">
+            <p class="pt-5">
+                {{ PROJECT.description }}
+            </p>
+        </div>
+
+        <div class="">
+            <div class="grid zoom-gallery">
+                <div class="grid-sizer"></div>
+
+                {% for IMAGE in PROJECT.files %}
+                    <div class="grid-item">
+                        <a href="{{ IMAGE }}" title="test">
+                            <img src="{{ IMAGE }}" alt="text" >
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- Page section end -->
+
+    <style>
+
+    </style>
+
+{% endblock %}
