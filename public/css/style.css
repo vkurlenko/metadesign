@@ -1039,6 +1039,10 @@ ol {
 	padding: .5rem
 }
 
+.portfolio-warp .grid-item {
+	padding: 0;
+}
+
 @media only screen and (max-width: 479px) {
 	.grid-sizer,
 	.grid-item {
@@ -1849,16 +1853,16 @@ ol {
 .portfolio-filter li {
 	display: inline-block;
 	margin-right: 2.5rem;
-	font-size: .875rem;
+	/*font-size: .875rem;*/
 	color: #222;
 	cursor: pointer;
 	font-weight: 500;
+	padding: 0 5px;
 }
 
 .portfolio-filter li.active {
-	text-decoration: underline;
-	-webkit-text-decoration-color: #2046f2;
-	        text-decoration-color: #2046f2;
+	background: #baff00;
+	color: #222222;
 }
 
 .portfolio-warp {
@@ -1882,40 +1886,49 @@ ol {
 	width: 40%;
 }
 
-.portfolio-warp .grid-item a {
+.portfolio-warp .grid-item div {
 	width: 100%;
 	height: 100%;
 	display: block;
-	background: rgba(186, 255, 0, 0.45);
+	/*background: rgba(186, 255, 0, 0.45);*/
+	background: rgba(13, 13, 13, 0.5);
 	opacity: 0;
 	-webkit-transition: all 0.4s;
 	-o-transition: all 0.4s;
 	transition: all 0.4s;
+	padding: 2rem;
 }
 
-.portfolio-warp .grid-item a:after {
-	position: absolute;
-	content: "+";
-	left: 50%;
-	top: 60%;
-	width: 48px;
-	margin-left: -24px;
-	margin-top: -24px;
-	color: #fff;
-	font-size: 48px;
-	line-height: 48px;
-	text-align: center;
-	-webkit-transition: all 0.4s;
-	-o-transition: all 0.4s;
-	transition: all 0.4s;
-	text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+.portfolio-warp .grid-item div h2 {
+	color: #fff !important;
 }
 
-.portfolio-warp .grid-item:hover a {
+.portfolio-warp .grid-item div p {
+	color: #baff00;
+}
+/*.portfolio-warp .grid-item a:after {*/
+/*	position: absolute;*/
+/*	content: "+";*/
+/*	left: 50%;*/
+/*	top: 60%;*/
+/*	width: 48px;*/
+/*	margin-left: -24px;*/
+/*	margin-top: -24px;*/
+/*	color: #fff;*/
+/*	font-size: 48px;*/
+/*	line-height: 48px;*/
+/*	text-align: center;*/
+/*	-webkit-transition: all 0.4s;*/
+/*	-o-transition: all 0.4s;*/
+/*	transition: all 0.4s;*/
+/*	text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);*/
+/*}*/
+
+.portfolio-warp .grid-item:hover div {
 	opacity: 1;
 }
 
-.portfolio-warp .grid-item:hover a:after {
+.portfolio-warp .grid-item:hover div:after {
 	top: 50%;
 }
 
@@ -1928,13 +1941,13 @@ ol {
 	border: 0;
 }
 
-.section-about {
+.section-about, .section-portfolio {
 	padding-top: 0;
 	background-position: center;
 	background-size: cover;
 }
 
-.section-about > div {
+.section-about > div, .section-portfolio > div {
 	background: #0000008c;
 	height: 100%;
 	padding-top: 200px
