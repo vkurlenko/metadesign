@@ -28,11 +28,9 @@ class PageController extends AbstractController
     #[Route('/')]
     public function index(): Response
     {
-        // Здесь лежит массив карточек для галереи в блоке "Портфолио".
-        $data = file_get_contents('portfolio_tabs.json');
-        $cards = json_decode($data, true);
+        $cards = $this->getCards();
 
-        $vars = $this->vars;
+        shuffle($cards['items']);
 
         $this->vars = array_merge($this->vars, ['CARDS' => $cards['items']]);
 
@@ -42,6 +40,12 @@ class PageController extends AbstractController
     #[Route('/portfolio')]
     public function portfolio(): Response
     {
+        $cards = $this->getCards();
+
+        shuffle($cards['items']);
+
+        $this->vars = array_merge($this->vars, ['CARDS' => $cards['items']]);
+
         return $this->render('portfolio.html.twig', $this->vars);
     }
 
@@ -80,5 +84,22 @@ class PageController extends AbstractController
         $this->vars = array_merge($this->vars, ['ID' => $identifier, 'PROJECT' => $data]);
 
         return $this->render('project.html.twig', $this->vars);
+    }
+
+    /**
+     * @return array
+     */
+    private function getCards(): array
+    {
+        $cards = [];
+
+        // Здесь лежит массив карточек для галереи "Портфолио".
+        $data = file_get_contents('portfolio_tabs.json');
+
+        if ($data) {
+            $cards = json_decode($data, true);
+        }
+
+        return is_array($cards) ? $cards : [];
     }
 }

@@ -25,12 +25,13 @@ $(window).on('load', function() {
 
 
 (function($) {
-
+	// init Masonry
 	$('.grid').masonry({
-		// options
 		itemSelector: '.grid-item',
 		columnWidth: '.grid-sizer',
 		percentPosition: true
+	}).imagesLoaded(function() {
+		$('.grid').masonry('layout');
 	});
 
 	$('.zoom-gallery').magnificPopup({
@@ -335,6 +336,7 @@ function __portfolio(){
 	var $container = $('#portfolio');
 	$container.isotope({
 		itemSelector: '.grid-item',
+		filter: '.projects',
 		percentPosition: true,
 		masonry: {
 			columnWidth: '.grid-sizer'
