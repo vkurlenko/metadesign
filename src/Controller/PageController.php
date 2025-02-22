@@ -34,7 +34,7 @@ class PageController extends AbstractController
     #[Route('/')]
     public function index(): Response
     {
-        $data = $this->getDataFromJson('portfolio_tabs.json');
+        $data = $this->getDataFromJson('portfolio.json');
         shuffle($data['items']);
 
         $services = $this->getDataFromJson('services.json');
@@ -55,7 +55,7 @@ class PageController extends AbstractController
     #[Route('/portfolio')]
     public function portfolio(): Response
     {
-        $data = $this->getDataFromJson('portfolio_tabs.json');
+        $data = $this->getDataFromJson('portfolio.json');
         shuffle($data['items']);
 
         $this->vars = array_merge(
