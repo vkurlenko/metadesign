@@ -10,3 +10,12 @@
 /temp/
 /.idea/*
 ###< symfony/framework-bundle ###
+/public/img/service/
+/public/img/projects/
+/public/img/about/
+/public/img/building/
+/public/img/drawings/
+/public/img/portfolio/
+/public/img/blog/
+/public/img/clients/
+/public/img/team/

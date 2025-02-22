@@ -33,7 +33,7 @@ html,
 body {
 	height: 100%;
 	font-family: 'dinpro_condensedregular', 'Roboto', sans-serif;
-	font-size: 1rem;
+	font-size: 16px;
 }
 
 h1,
@@ -233,7 +233,7 @@ ol {
 	border: 4px solid;
 	min-width: 200px;
 	text-align: center;
-	padding: 19px 0;
+	padding: 1rem 0;
 	position: relative;
 	background-color: transparent;
 	margin-right: 15px;
@@ -1110,8 +1110,8 @@ ol {
 
 .projects-slider .single-project .seemore {
 	position: absolute;
-	right: 50px;
-	bottom: 1.875rem;
+	right: 2rem;
+	bottom: 2rem;
 	background: #baff00;
 	font-size: 2rem;
 	font-weight: 700;
@@ -1133,7 +1133,7 @@ ol {
 }
 
 .projects-slider .single-project:hover .seemore {
-	bottom: 50px;
+	bottom: 2rem;
 }
 
 .projects-slider .single-project.__loading {
@@ -1153,7 +1153,7 @@ ol {
 .projects-slider .owl-nav .owl-next {
 	display: inline-block;
 	margin-right: 1.25rem;
-	font-size: .875rem;
+	font-size: 2rem;
 	font-weight: 700;
 	color: #222222;
 	letter-spacing: 1px;
@@ -1213,7 +1213,7 @@ ol {
 /*----------------------------------------*/
 .footer-section {
 	padding-top: 110px;
-	padding-bottom: 110px;
+	/*padding-bottom: 110px;*/
 	border-top: 1px solid #c8c8c8;
 	position: relative;
 }
@@ -1247,7 +1247,7 @@ ol {
 
 .footer-item ul li a {
 	display: inline-block;
-	font-size: 15px;
+	font-size: 1.5rem;
 	font-weight: 500;
 	color: #222222;
 	padding: 0 5px;
@@ -1601,13 +1601,13 @@ ol {
 }
 
 .pagination a {
-	font-size: 18px;
+	font-size: 1rem;
 	font-weight: 700;
 	color: #fff;
 }
 
 .pagination a.active {
-	font-size: 48px;
+	font-size: 3rem;
 	color: #baff00;
 }
 
@@ -1620,7 +1620,7 @@ ol {
 }
 
 .widget-area .widget-title {
-	font-size: 22px;
+	font-size: 1.4rem;
 	margin-bottom: 2.5rem;
 }
 
@@ -1628,7 +1628,7 @@ ol {
 	width: 100%;
 	background: #f0f0f0;
 	border: none;
-	font-size: 12px;
+	font-size: .75rem;
 	padding: 10px;
 	padding-right: 2.1875rem;
 	font-style: italic;
@@ -1650,7 +1650,7 @@ ol {
 }
 
 .widget-area ul li a {
-	font-size: 15px;
+	font-size: 1rem;
 	display: inline-block;
 	margin-bottom: 15px;
 	font-weight: 500;
@@ -1715,13 +1715,13 @@ ol {
 }
 
 .widget-area .rp-widget p {
-	font-size: 12px;
+	font-size: .75rem;
 	font-weight: 500;
 	margin-bottom: 0;
 }
 
 .widget-area .quote-widget span {
-	font-size: 47px;
+	font-size: 3rem;
 	font-style: italic;
 	color: #727272;
 }
@@ -1729,7 +1729,7 @@ ol {
 .widget-area .quote-widget p {
 	font-style: italic;
 	margin-bottom: 0;
-	font-size: 13px;
+	font-size: .8rem;
 }
 
 .widget-area .instagram-widget {
@@ -1807,7 +1807,7 @@ ol {
 .contact-form input,
 .contact-form textarea {
 	width: 100%;
-	font-size: 13px;
+	font-size: .8rem;
 	border: none;
 	background: #f0f0f0;
 	padding: 15px 20px;
@@ -1841,6 +1841,14 @@ ol {
 	display: block;
 	background: #f0f0f0;
 	margin-bottom: 2px;
+}
+
+.drawings {
+	background-size: contain !important;
+	background-position: center !important;
+	background-color: #fff !important;
+	background-repeat: no-repeat !important;
+	border: 1px solid #747474;
 }
 
 /*----------------------------------------*/
@@ -1947,10 +1955,61 @@ ol {
 	background-size: cover;
 }
 
-.section-about > div, .section-portfolio > div {
+.section-about > div, .section-portfolio > div/*, .hero-section > div*/ {
 	background: #0000008c;
 	height: 100%;
 	padding-top: 200px
+}
+
+.hero-slide-item > div {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #0000008c;
+	top: 0;
+}
+
+.card-link {
+	position: absolute;
+	left: 2rem;
+	bottom: 2rem;
+	display: inline-block;
+}
+
+.service-page h3 {
+	cursor: pointer
+}
+
+.service-item-wrapper {
+	display: none;
+}
+
+.service-item-wrapper .service-item {
+	display: flex;
+	flex-flow: row nowrap;
+	background: #222;
+	padding: 1rem;
+}
+
+.service-item-wrapper .service-item .service-item-description {
+	width: 50%;
+	/*height: 350px;*/
+	color: #fff;
+	display: flex;
+	align-items: center;
+	padding: 0 1rem 0 0;
+}
+
+.service-item-wrapper .service-item .service-item-description span {
+	font-size: 1.5rem;
+}
+
+.service-item-wrapper .service-item .service-item-image {
+	width: 50%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 350px;
 }
 
 /* ===========================
@@ -1982,10 +2041,10 @@ ol {
 	}
 	.milestone p {
 		margin-left: 10px;
-		font-size: 17px;
+		font-size: 1rem;
 	}
 	.milestone h2 {
-		font-size: 55px;
+		font-size: 3.5rem;
 	}
 	.milestone:after {
 		width: 90px;
@@ -2033,11 +2092,11 @@ ol {
 	}
 	.nav-menu ul li a {
 		margin-right: 5px;
-		font-size: 13px;
+		font-size: .8rem;
 		padding: 37px 7px 5px;
 	}
 	.phone-number {
-		font-size: 12px;
+		font-size: .75rem;
 		margin-right: 10px;
 	}
 	.team-member {
@@ -2113,10 +2172,10 @@ ol {
 @media only screen and (max-width: 767px) {
 	h1,
 	.sp-title {
-		font-size: 45px;
+		font-size: 2.8rem;
 	}
 	.page-header-section .header-title {
-		font-size: 55px;
+		font-size: 3.5rem;
 	}
 	.left-bar {
 		width: 70px;
@@ -2261,6 +2320,14 @@ ol {
 	.mobile-hidden {
 		display: none;
 	}
+
+	.service-item-wrapper .service-item {
+		display: block;
+	}
+
+	.service-item-wrapper .service-item > div {
+		width: 100% !important;
+	}
 }
 
 /* small mobile :320px. */
@@ -2339,4 +2406,24 @@ ol {
 	.hero-slider .owl-nav .owl-next {
 		font-size: 1.5rem;
 	}
+
+	html {
+		font-size: 12px;
+	}
+
+	/*p {*/
+	/*	font-size: 2rem;*/
+	/*}*/
+
+	/*li {*/
+	/*	font-size: 1.5rem;*/
+	/*}*/
+
+	/*.sp-title, .sp-title span  {*/
+	/*	font-size: 2rem;*/
+	/*}*/
+
+	/*.site-btn {*/
+	/*	font-size: 2rem;*/
+	/*}*/
 }

@@ -22,6 +22,14 @@ return function (RoutingConfigurator $routes): void {
         ->controller([PageController::class, 'project'])
     ;
 
+    $routes->add('drawing', '/drawing/{identifier}')
+        ->controller([PageController::class, 'drawing'])
+    ;
+
+    $routes->add('service', '/service/{identifier}')
+        ->controller([PageController::class, 'service'])
+    ;
+
     // Api
     $routes->add('calculate', '/api/calculate')
         ->controller([CalculateController::class, 'index'])
