@@ -25,6 +25,12 @@ $(window).on('load', function() {
 
 
 (function($) {
+	$( "#accordion h3" ).on('click', function (e) {
+		$(this).next('.service-item-wrapper').eq(0).toggle();
+		$(this).find('.toggle-down').eq(0).toggle();
+		$(this).find('.toggle-up').eq(0).toggle();
+	});
+
 	// init Masonry
 	$('.grid').masonry({
 		itemSelector: '.grid-item',

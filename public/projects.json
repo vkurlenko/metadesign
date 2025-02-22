@@ -1,53 +1,61 @@
 {
-  "projects": [
+  "items": [
     {
       "identifier": "architect",
       "dir": "/img/projects/architect",
       "name": "ЖК Архитектор",
-      "description": "Описание проекта"
+      "description": "Описание проекта",
+      "items": []
     },
     {
       "identifier": "forst",
       "dir": "/img/projects/forst",
       "name": "ЖК Forst",
       "text": "27,5 кв.м.",
-      "description": "Описание проекта"
+      "description": "Описание проекта",
+      "items": []
     },
     {
       "identifier": "kit",
       "dir": "/img/projects/kit",
       "name": "ЖК КИТ",
-      "description": "Описание проекта"
+      "description": "Описание проекта",
+      "items": []
     },
     {
       "identifier": "odintsovo",
       "dir": "/img/projects/odintsovo",
       "name": "Одинцово",
-      "description": "Описание проекта"
+      "description": "Описание проекта",
+      "items": []
     },
     {
       "identifier": "putilkovo",
       "dir": "/img/projects/putilkovo",
       "name": "ЖК Большое Путилково",
-      "description": "Описание проекта"
+      "description": "Описание проекта",
+      "items": []
     },
     {
       "identifier": "sky_view",
       "dir": "/img/projects/sky_view",
       "name": "ЖК Sky View",
-      "description": "Описание проекта"
+      "description": "Описание проекта",
+      "items": []
     },
     {
       "identifier": "tricolor_107",
       "dir": "/img/projects/tricolor_107",
       "name": "Жк Триколор",
-      "description": "Описание проекта"
+      "description": "Описание проекта",
+      "items": []
     },
     {
       "identifier": "tricolor_128",
       "dir": "/img/projects/tricolor_128",
       "name": "Жк Триколор",
-      "description": "Описание проекта"
+      "description": "Описание проекта",
+      "items": []
     }
   ]
 }

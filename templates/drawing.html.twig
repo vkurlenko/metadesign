@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Чертеж{% endblock %}
+
+{% block content %}
+
+    <!-- Page header section start -->
+    <section class="page-header-section set-bg section-about" data-setbg="/img/bg_MD_4.jpg">
+        <div style="">
+            <div class="container">
+                <h1 class="header-title">{{ DRAWING.name }}</h1>
+            </div>
+        </div>
+    </section>
+    <!-- Page header section end -->
+
+
+    <!-- Page section start -->
+    <div class="page-section" >
+        <div class="container">
+
+            <div class="py-3">
+                <a href="/portfolio" class="site-btn sb-dark">Портфолио</a>
+            </div>
+            <p class="pt-5">
+                {{ DRAWING.description }}
+            </p>
+        </div>
+
+        <div class="">
+            <div class="grid zoom-gallery">
+                <div class="grid-sizer"></div>
+
+                {% for IMAGE in DRAWING.files %}
+                    <div class="grid-item">
+                        <a href="{{ IMAGE }}" title="test">
+                            <img src="{{ IMAGE }}" alt="text" >
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- Page section end -->
+
+{% endblock %}

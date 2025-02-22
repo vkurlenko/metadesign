@@ -47,11 +47,17 @@
     </div>
     <nav class="nav-menu">
         <ul>
-            <li class="active"><a href="/">Главная</a></li>
-            <li><a href="/about">О нас</a></li>
-            <li><a href="/portfolio">Портфолио</a></li>
-            <li><a href="/#services">Услуги</a></li>
-            <li><a href="/#contact">Контакты</a></li>
+            <li {% if CURRENT_PAGE == 'index' %} class="active" {% endif %}><a href="/">Главная</a></li>
+            <li {% if CURRENT_PAGE == 'about' %} class="active" {% endif %}><a href="/about">О нас</a></li>
+            <li {%
+                if CURRENT_PAGE == 'portfolio'
+                or CURRENT_PAGE == 'project'
+                or CURRENT_PAGE == 'drawing'
+            %} class="active" {% endif %}>
+                <a href="/portfolio">Портфолио</a>
+            </li>
+            <li {% if CURRENT_PAGE == 'service' %} class="active" {% endif %}><a href="/#services">Услуги</a></li>
+            <li {% if CURRENT_PAGE == 'contact' %} class="active" {% endif %}><a href="/#contact">Контакты</a></li>
         </ul>
     </nav>
 </header>
@@ -76,6 +82,7 @@
             <a href="https://api.whatsapp.com/send/?phone={{ PHONE }}"><i class="fa fa-whatsapp"></i></a>
         </div>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-9 offset-lg-3">
@@ -89,28 +96,6 @@
                                 <li><a href="#services">Услуги</a></li>
                                 <li><a href="#contact">Контакты</a></li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="footer-item">
-{#                            <ul>#}
-{#                                <li><a href="#">Terms & Conditions</a></li>#}
-{#                                <li><a href="#">FAQ</a></li>#}
-{#                                <li><a href="#">Help Desk</a></li>#}
-{#                                <li><a href="#">Job Aplications</a></li>#}
-{#                                <li><a href="#">Site Map</a></li>#}
-{#                            </ul>#}
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="footer-item">
-{#                            <ul>#}
-{#                                <li><a href="#">Privacy</a></li>#}
-{#                                <li><a href="#">Contact us</a></li>#}
-{#                                <li><a href="#">Newsletter</a></li>#}
-{#                                <li><a href="#">Clients Testimonials</a></li>#}
-{#                                <li><a href="#">FAQ</a></li>#}
-{#                            </ul>#}
                         </div>
                     </div>
                 </div>
@@ -130,6 +115,7 @@
 <!-- Footer section end -->
 
 <!--====== Javascripts & Jquery ======-->
+
 <script src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>

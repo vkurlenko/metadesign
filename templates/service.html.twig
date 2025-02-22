@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Сервис{% endblock %}
+
+{% block content %}
+
+
+    <!-- Page header section start -->
+    <section class="page-header-section set-bg section-portfolio" data-setbg="/img/bg_MD_4.jpg">
+        <div>
+            <div class="container">
+                <h1 class="header-title">{{ SERVICE.name }}</h1>
+            </div>
+        </div>
+    </section>
+    <!-- Page header section end -->
+
+
+    <!-- Page section start -->
+    <div class="page-section spad">
+        <div class="container">
+
+            {% if ID == 'design_project' %}
+                {{ include('service/_design_project.html.twig') }}
+            {% elseif ID == 'repair' %}
+                {{ include('service/_repair.html.twig') }}
+            {% elseif ID == 'works' %}
+                {{ include('service/_works.html.twig') }}
+            {% elseif ID == 'equipment' %}
+                {{ include('service/_equipment.html.twig') }}
+            {% elseif ID == 'supervision' %}
+                {{ include('service/_supervision.html.twig') }}
+            {% elseif ID == 'consulting' %}
+                {{ include('service/_consulting.html.twig') }}
+            {% endif %}
+
+        </div>
+
+    </div>
+    <!-- Page section end -->
+
+{% endblock %}

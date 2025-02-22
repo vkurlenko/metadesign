@@ -34,63 +34,17 @@
 
                 {% for ITEM in CARDS %}
                     <div class="grid-item set-bg {{ ITEM.group }}" data-setbg="{{ ITEM.img }}">
-                        <a href="/project/{{ ITEM.id }}">
+                        <a href="/{{ ITEM.route }}/{{ ITEM.id }}">
                             <div class="project-content">
                                 <h2>{{ ITEM.title }}</h2>
                                 <p>{{ ITEM.text }}</p>
                             </div>
                         </a>
-{#                        <a href="/project/{{ ITEM.id }}" id="{{ ITEM.id }}" class="seemore"></a>#}
                     </div>
-
-{#                    <div class="single-project set-bg {{ ITEM.group }}" data-setbg="{{ ITEM.img }}">#}
-{#                        <div class="project-content">#}
-{#                            <h2>{{ ITEM.title }}</h2>#}
-{#                            <p>{{ ITEM.text }}</p>#}
-{#                            <a href="/project/{{ ITEM.id }}" id="{{ ITEM.id }}" class="seemore">Подробнее</a>#}
-{#                        </div>#}
-{#                    </div>#}
                 {% endfor %}
-                {#
-                <!-- portfolio item -->
-                <div class="grid-item set-bg grid-wide photo" data-setbg="img/portfolio/1.jpg">
-                    <a class="img-popup" href="img/portfolio/1.jpg"></a>
-                </div>
-
-                <!-- portfolio item -->
-                <div class="grid-item set-bg design corp" data-setbg="img/portfolio/2.jpg">
-                    <a class="img-popup" href="img/portfolio/2.jpg"></a>
-                </div>
-
-                <!-- portfolio item -->
-                <div class="grid-item set-bg iden photo uxui" data-setbg="img/portfolio/3.jpg">
-                    <a class="img-popup" href="img/portfolio/3.jpg"></a>
-                </div>
-
-                <!-- portfolio item -->
-                <div class="grid-item set-bg corp design" data-setbg="img/portfolio/4.jpg">
-                    <a class="img-popup" href="img/portfolio/4.jpg"></a>
-                </div>
-
-                <!-- portfolio item -->
-                <div class="grid-item set-bg uxui iden" data-setbg="img/portfolio/5.jpg">
-                    <a class="img-popup" href="img/portfolio/5.jpg"></a>
-                </div>
-
-                <!-- portfolio item -->
-                <div class="grid-item set-bg grid-long design corp" data-setbg="img/portfolio/6.jpg">
-                    <a class="img-popup" href="img/portfolio/6.jpg"></a>
-                </div>#}
 
             </div>
         </div>
-{#        <div class="container">#}
-{#            <div class="pagination">#}
-{#                <a href="#">01</a>#}
-{#                <a href="" class="active">02</a>#}
-{#                <a href="">03</a>#}
-{#            </div>#}
-{#        </div>#}
     </div>
     <!-- Page section end -->
 

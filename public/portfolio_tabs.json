@@ -2,66 +2,146 @@
   "items": [
     {
       "group": "projects",
+      "route": "project",
       "id": "architect",
       "img": "img/projects/architect/1.jpg",
       "title": "ЖК Архитектор",
-      "text": "75 кв.м."
-    },
-    {
-      "group": "building",
-      "id": "building",
-      "img": "img/building/1.jpg",
-      "title": "Стройка",
-      "text": "текст о стройке"
+      "text": "75 кв.м.",
+      "link": ""
     },
     {
       "group": "projects",
+      "route": "project",
       "id": "forst",
       "img": "img/projects/forst/1.jpg",
       "title": "ЖК Forst",
-      "text": "27,5 кв.м."
+      "text": "27,5 кв.м.",
+      "link": ""
     },
     {
       "group": "projects",
+      "route": "project",
       "id": "kit",
       "img": "img/projects/kit/1.jpg",
       "title": "ЖК КИТ",
-      "text": "60 кв.м."
+      "text": "60 кв.м.",
+      "link": ""
     },
     {
       "group": "projects",
+      "route": "project",
       "id": "odintsovo",
       "img": "img/projects/odintsovo/1.jpg",
       "title": "Одинцово",
-      "text": "38 кв.м."
+      "text": "38 кв.м.",
+      "link": ""
     },
     {
       "group": "projects",
+      "route": "project",
       "id": "putilkovo",
       "img": "img/projects/putilkovo/1.jpg",
       "title": "ЖК Большое Путилково",
-      "text": "44 кв.м."
+      "text": "44 кв.м.",
+      "link": ""
     },
     {
       "group": "projects",
+      "route": "project",
       "id": "sky_view",
       "img": "img/projects/sky_view/1.jpg",
       "title": "ЖК Sky View",
-      "text": "94,2 кв.м."
+      "text": "94,2 кв.м.",
+      "link": ""
     },
     {
       "group": "projects",
+      "route": "project",
       "id": "tricolor_107",
       "img": "img/projects/tricolor_107/1.jpg",
       "title": "Жк Триколор",
-      "text": "107 кв.м."
+      "text": "107 кв.м.",
+      "link": ""
     },
     {
       "group": "projects",
+      "route": "project",
       "id": "tricolor_128",
       "img": "img/projects/tricolor_128/1.jpg",
       "title": "Жк Триколор",
-      "text": "128 кв.м."
+      "text": "128 кв.м.",
+      "link": ""
+    },
+
+    {
+      "group": "building",
+      "route": "building",
+      "id": "building",
+      "img": "img/building/1.jpg",
+      "title": "Стройка",
+      "text": "текст о стройке",
+      "link": ""
+    },
+
+    {
+      "group": "drawings",
+      "route": "drawing",
+      "id": "drawing1",
+      "img": "img/drawings/drawing1/1.jpg",
+      "title": "ЖК Sky Wiew",
+      "text": "Планы помещений",
+      "link": {
+        "url": "/img/drawings/drawing1/Планы помещений.pdf",
+        "title": "Планы помещений.pdf"
+      }
+    },
+    {
+      "group": "drawings",
+      "route": "drawing",
+      "id": "drawing2",
+      "img": "img/drawings/drawing2/1.jpg",
+      "title": "ЖК Sky Wiew",
+      "text": "Электрика",
+      "link": {
+        "url": "/img/drawings/drawing2/Электрика.pdf",
+        "title": "Электрика.pdf"
+      }
+    },
+    {
+      "group": "drawings",
+      "route": "drawing",
+      "id": "drawing3",
+      "img": "img/drawings/drawing3/1.jpg",
+      "title": "ЖК Sky Wiew",
+      "text": "Отделка помещений",
+      "link": {
+        "url": "/img/drawings/drawing3/Отделка помещений.pdf",
+        "title": "Отделка помещений.pdf"
+      }
+    },
+    {
+      "group": "drawings",
+      "route": "drawing",
+      "id": "drawing4",
+      "img": "img/drawings/drawing4/1.jpg",
+      "title": "ЖК Sky Wiew",
+      "text": "Развертки по стенам",
+      "link": {
+        "url": "/img/drawings/drawing4/Развертки по стенам.pdf",
+        "title": "Развертки по стенам.pdf"
+      }
+    },
+    {
+      "group": "drawings",
+      "route": "drawing",
+      "id": "drawing5",
+      "img": "img/drawings/drawing5/1.jpg",
+      "title": "ЖК Sky Wiew",
+      "text": "Спецификации",
+      "link": {
+        "url": "/img/drawings/drawing5/Спецификации.pdf",
+        "title": "Спецификации.pdf"
+      }
     }
   ]
 }
