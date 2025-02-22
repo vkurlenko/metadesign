@@ -26,6 +26,10 @@
 	font-style: normal;
 }
 
+:root {
+	--lime: #baff00;
+}
+
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
@@ -617,6 +621,7 @@ ol {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	z-index: 11;
 }
 
 .hero-slider .hero-slide-item {
@@ -793,7 +798,7 @@ ol {
 /*  Intro Section CSS
 /*----------------------------------------*/
 .intro-text p {
-	margin-bottom: 50px;
+	/*margin-bottom: 50px;*/
 }
 
 /*----------------------------------------*/
@@ -2012,6 +2017,30 @@ ol {
 	height: 350px;
 }
 
+.fixed-panel {
+	display: flex;
+	align-items: center;
+	position: fixed;
+	bottom: 20vh;
+	background-color: var(--lime);
+	right: 0;
+	padding: 1rem;
+	border-radius: 1rem 0 0 1rem;
+	color: #000;
+	cursor: pointer;
+	z-index: 10;
+	opacity: .8;
+}
+
+.fixed-panel:hover {
+	opacity: 1;
+}
+
+.fixed-panel svg {
+	max-height: 2rem;
+	width: 2rem;
+}
+
 /* ===========================
   Responsive
 ==============================*/
@@ -2171,7 +2200,7 @@ ol {
 /* Large Mobile :480px. */
 @media only screen and (max-width: 767px) {
 	h1,
-	.sp-title {
+	.sp-title, .sp-title span {
 		font-size: 2.8rem;
 	}
 	.page-header-section .header-title {
@@ -2330,6 +2359,8 @@ ol {
 	}
 }
 
+/* ========================================================================================================*/
+
 /* small mobile :320px. */
 @media only screen and (max-width: 479px) {
 	.logo-area {
@@ -2356,9 +2387,14 @@ ol {
 		padding: 0 15px;
 	}
 	.slide-content h2 {
-		font-size: 2.1875rem;
+		font-size: 5rem;
 		line-height: 1.5;
 	}
+
+	.intro-section {
+		padding-top: 50px;
+	}
+
 	.portfolio-warp .grid-item {
 		width: 100%;
 	}
@@ -2379,23 +2415,23 @@ ol {
 
 	.card,
 	.modal p {
-		font-size: 1.25rem;
+		font-size: 1.5rem;
 	}
 
 	.card-title, .modal-title {
-		font-size: 1.5rem;
+		font-size: 2rem;
 	}
 
 	.card .form-control,
 	.card .input-group-text {
-		font-size: 1rem;
+		font-size: 1.5rem;
 		font-weight: 700;
 	}
 
 	.card label {
 		margin-bottom: 0;
 		line-height: normal;
-		font-size: 1rem;
+		font-size: 1.5rem;
 	}
 
 	.form-calculator .btn[type='submit'] {
@@ -2411,17 +2447,29 @@ ol {
 		font-size: 12px;
 	}
 
-	/*p {*/
-	/*	font-size: 2rem;*/
-	/*}*/
+	.fixed-panel span {
+		display: none;
+	}
 
-	/*li {*/
-	/*	font-size: 1.5rem;*/
-	/*}*/
+	p {
+		font-size: 1.75rem;
+	}
 
-	/*.sp-title, .sp-title span  {*/
-	/*	font-size: 2rem;*/
-	/*}*/
+	span {
+		font-size: 3rem;
+	}
+
+	li {
+		font-size: 1.5rem;
+	}
+
+	.sp-title, .sp-title span  {
+		/*font-size: 2rem;*/
+	}
+
+	.spad {
+		padding-top: 50px;
+	}
 
 	/*.site-btn {*/
 	/*	font-size: 2rem;*/
