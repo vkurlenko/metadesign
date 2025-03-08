@@ -20,11 +20,6 @@
     <link rel="stylesheet" href="{{ asset('/css/owl.carousel.css') }}"/>
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}"/>
 
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 <body>
 <!-- Page Preloder -->
@@ -47,11 +42,17 @@
     </div>
     <nav class="nav-menu">
         <ul>
-            <li class="active"><a href="/">Главная</a></li>
-            <li><a href="/about">О нас</a></li>
-            <li><a href="/portfolio">Портфолио</a></li>
-            <li><a href="/#services">Услуги</a></li>
-            <li><a href="/#contact">Контакты</a></li>
+            <li {% if CURRENT_PAGE == 'index' %} class="active" {% endif %}><a href="/">Главная</a></li>
+            <li {% if CURRENT_PAGE == 'about' %} class="active" {% endif %}><a href="/about">О нас</a></li>
+            <li {%
+                if CURRENT_PAGE == 'portfolio'
+                or CURRENT_PAGE == 'project'
+                or CURRENT_PAGE == 'drawing'
+            %} class="active" {% endif %}>
+                <a href="/portfolio">Портфолио</a>
+            </li>
+            <li {% if CURRENT_PAGE == 'service' %} class="active" {% endif %}><a href="/#services">Услуги</a></li>
+            <li {% if CURRENT_PAGE == 'contact' %} class="active" {% endif %}><a href="/#contact">Контакты</a></li>
         </ul>
     </nav>
 </header>
@@ -69,13 +70,13 @@
     <a id="contact"></a>
     <div class="footer-social">
         <div class="social-links">
-            <a href="#"><i class="fa fa-pinterest"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
             <a href="#"><i class="fa fa-instagram"></i></a>
             <a href="https://t.me/+{{ PHONE }}"><i class="fa fa-telegram"></i></a>
             <a href="https://api.whatsapp.com/send/?phone={{ PHONE }}"><i class="fa fa-whatsapp"></i></a>
         </div>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-9 offset-lg-3">
@@ -86,31 +87,9 @@
                                 <li><a href="/">Главная</a></li>
                                 <li><a href="/about">О нас</a></li>
                                 <li><a href="/portfolio">Портфолио</a></li>
-                                <li><a href="#services">Услуги</a></li>
-                                <li><a href="#contact">Контакты</a></li>
+                                <li><a href="/#services">Услуги</a></li>
+                                <li><a href="/#contact">Контакты</a></li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="footer-item">
-{#                            <ul>#}
-{#                                <li><a href="#">Terms & Conditions</a></li>#}
-{#                                <li><a href="#">FAQ</a></li>#}
-{#                                <li><a href="#">Help Desk</a></li>#}
-{#                                <li><a href="#">Job Aplications</a></li>#}
-{#                                <li><a href="#">Site Map</a></li>#}
-{#                            </ul>#}
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="footer-item">
-{#                            <ul>#}
-{#                                <li><a href="#">Privacy</a></li>#}
-{#                                <li><a href="#">Contact us</a></li>#}
-{#                                <li><a href="#">Newsletter</a></li>#}
-{#                                <li><a href="#">Clients Testimonials</a></li>#}
-{#                                <li><a href="#">FAQ</a></li>#}
-{#                            </ul>#}
                         </div>
                     </div>
                 </div>
@@ -119,17 +98,72 @@
     </div>
 
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-{#    <div class="copyright">#}
-{#        Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.#}
-{#        <br>#}
+    <div class="copyright pb-3">
+        Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.
+        <br>
 {#        This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>#}
-{#    </div>#}
+    </div>
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 </footer>
 <!-- Footer section end -->
 
+<div class="fixed-panel btnModalCalculator">
+    <svg fill="#000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 183.5 183.5" style="enable-background:new 0 0 183.5 183.5;" xml:space="preserve"><path d="M145,183.5H38.5C17.271,183.5,0,166.229,0,145V38.5C0,17.271,17.271,0,38.5,0H145c21.229,0,38.5,17.271,38.5,38.5V145C183.5,166.229,166.229,183.5,145,183.5z M94.75,177.5H145c17.921,0,32.5-14.58,32.5-32.5V94.75H94.75V177.5z M6,94.75V145c0,17.92,14.579,32.5,32.5,32.5h50.25V94.75H6z M94.75,88.75h82.75V38.5C177.5,20.58,162.921,6,145,6H94.75V88.75z M6,88.75h82.75V6H38.5C20.579,6,6,20.58,6,38.5V88.75z M62.61,151.24c-0.768,0-1.535-0.293-2.121-0.878l-11.786-11.786l-11.785,11.786c-1.172,1.171-3.07,1.171-4.242,0c-1.172-1.171-1.172-3.071,0-4.242l11.785-11.786l-11.785-11.785c-1.172-1.171-1.172-3.071,0-4.242c1.172-1.172,3.07-1.171,4.242,0l11.785,11.786l11.786-11.786c1.172-1.171,3.07-1.171,4.242,0c1.172,1.171,1.172,3.071,0,4.242l-11.785,11.785l11.785,11.786c1.172,1.171,1.172,3.071,0,4.242C64.146,150.947,63.378,151.24,62.61,151.24z M137.64,151.24h-0.073c-1.657,0-3-1.343-3-3s1.343-3,3-3s3.037,1.343,3.037,3S139.297,151.24,137.64,151.24z M153.629,137.333h-32.052c-1.657,0-3-1.343-3-3s1.343-3,3-3h32.052c1.657,0,3,1.343,3,3S155.286,137.333,153.629,137.333z M137.671,123.427h-0.136c-1.657,0-3-1.343-3-3s1.343-3,3-3h0.136c1.657,0,3,1.343,3,3S139.328,123.427,137.671,123.427z M48.703,64.667c-1.657,0-3-1.343-3-3V48.333H32.37c-1.657,0-3-1.343-3-3s1.343-3,3-3h13.333V29c0-1.657,1.343-3,3-3s3,1.343,3,3v13.333h13.334c1.657,0,3,1.343,3,3s-1.343,3-3,3H51.703v13.333C51.703,63.323,50.36,64.667,48.703,64.667z M153.937,48.333H121.27c-1.657,0-3-1.343-3-3s1.343-3,3-3h32.667c1.657,0,3,1.343,3,3S155.594,48.333,153.937,48.333z"></path></svg>
+    <span class="ml-3">Рассчитать</span>
+</div>
+
+<!-- Модальное окно калькулятора -->
+<div class="modal" tabindex="-1" id="myModalCalculator">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Калькулятор стоимости ремонта</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ include('index/_calculator.html.twig') }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" id="btnSubmit" class="btn btn-primary">Рассчитать стоимость</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Модальное окно калькулятора -->
+
+<!-- Модальное окно результатов рассчета -->
+<div class="modal" tabindex="-1" id="modalResult">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Какой-то заголовок</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="response-loader" style="text-align: center">
+                    <div class="spinner-border text-dark" role="status">
+                        <span class="sr-only">Загрузка...</span>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" id="btnRepeat" class="btn btn-primary" data-dismiss="modal">Создать еще одну заявку</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Модальное окно результатов рассчета -->
+
 <!--====== Javascripts & Jquery ======-->
+
 <script src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>

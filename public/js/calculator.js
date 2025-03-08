@@ -5,7 +5,7 @@ $(document).ready(function () {
         modalResult = $('#modalResult'),
         modalBody = modalResult.find('.modal-body p'),
         responseLoader = $('.response-loader'),
-        btnModalCalculator = $('#btnModalCalculator'),
+        btnModalCalculator = $('.btnModalCalculator'),
         btnSubmit = $('#btnSubmit'),
         btnRepeat = $('#btnRepeat')
     ;

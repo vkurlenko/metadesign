@@ -3,32 +3,33 @@
 namespace App\Controller;
 
 use App\Entity\Project;
-use App\Service\ProjectService;
+use App\Service\FileService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProjectController extends AbstractController
 {
     /**
-     * @var ProjectService
+     * @var FileService
      */
-    private ProjectService $projectService;
+    private FileService $fileService;
 
     /**
-     * @param ProjectService $projectService
+     * @param FileService $fileService
      */
-    public function __construct(ProjectService $projectService)
+    public function __construct(FileService $fileService)
     {
-        $this->projectService = $projectService;
+        $this->fileService = $fileService;
     }
 
     /**
+     * @param string $type
      * @param string $identifier
      * @return Project|null
      */
-    public function getProject(string $identifier): ?Project
+    public function getProject(string $type, string $identifier): ?Project
     {
         $project = null;
-        $projectData = $this->projectService->getProjectByIdentifier($identifier);
+        $projectData = $this->fileService->getProjectByIdentifier($type, $identifier);
 
         if ($projectData) {
             $project = new Project();
@@ -36,6 +37,8 @@ class ProjectController extends AbstractController
             $project->setName($projectData['name']);
             $project->setDescription($projectData['description']);
             $project->setFiles($projectData['files']);
+            $project->setItems($projectData['items']);
+            $project->setDir($projectData['dir']);
         }
 
         return $project;

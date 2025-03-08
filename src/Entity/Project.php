@@ -2,29 +2,42 @@
 
 namespace App\Entity;
 
-use App\Repository\ProjectRepository;
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
-
-#[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
     private ?string $identifier = null;
 
-    #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private ?array $files = null;
+
+    private ?array $items = null;
+
+    private ?string $dir = null;
+
+    public function getDir(): ?string
+    {
+        return $this->dir;
+    }
+
+    public function setDir(?string $dir): void
+    {
+        $this->dir = $dir;
+    }
+
+
+    public function getItems(): ?array
+    {
+        return $this->items;
+    }
+
+    public function setItems(?array $items): void
+    {
+        $this->items = $items;
+    }
 
     public function getId(): ?int
     {

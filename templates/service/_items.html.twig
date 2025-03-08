@@ -1,0 +1,25 @@
+<div id="accordion" class="service-page mt-5">
+    {% for ITEM in SERVICE.items %}
+        <div>
+            <h3 style="display: flex; justify-content: space-between">
+                <span style="font-size: 1.5rem">
+                    {{  loop.index }}. {{ ITEM.title }}
+                </span>
+                <span class="toggle-down" style="font-size: 2rem">+</span>
+                <span class="toggle-up" style="display: none; font-size: 2rem">-</span>
+            </h3>
+            <div class="service-item-wrapper">
+                <p>
+                    <div class="service-item">
+                        <div class="service-item-description">
+                            <span>{{ ITEM.description }}</span>
+                        </div>
+                        <div class="service-item-image"
+                             style="background-image: url('{{ SERVICE.dir }}/{{ ITEM.img }}')">
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+</div>

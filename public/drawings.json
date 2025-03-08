@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "identifier": "drawing1",
+      "dir": "/img/drawings/drawing1",
+      "name": "Планы помещений",
+      "description": "Описание чертежа",
+      "items": []
+    },
+    {
+      "identifier": "drawing2",
+      "dir": "/img/drawings/drawing2",
+      "name": "Электрика",
+      "description": "Описание чертежа",
+      "items": []
+    },
+    {
+      "identifier": "drawing3",
+      "dir": "/img/drawings/drawing3",
+      "name": "Отделка помещений",
+      "description": "Описание чертежа",
+      "items": []
+    },
+    {
+      "identifier": "drawing4",
+      "dir": "/img/drawings/drawing4",
+      "name": "Развертки по стенам",
+      "description": "Описание чертежа",
+      "items": []
+    },
+    {
+      "identifier": "drawing5",
+      "dir": "/img/drawings/drawing5",
+      "name": "Спецификации",
+      "description": "Описание чертежа",
+      "items": []
+    }
+  ]
+}
