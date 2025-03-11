@@ -18,6 +18,13 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class CalculateController extends AbstractController
 {
     const REALTY_TYPE_FLAT = 'flat';
+    const REALTY_TYPE_HOUSE = 'house';
+    const REALTY_TYPE_COMMERCE = 'commerce';
+    const REPAIR_TYPE_COMFORT = 'comfort';
+    const REPAIR_TYPE_BUSINESS = 'business';
+    const REPAIR_TYPE_PREMIUM = 'premium';
+    const ROOM_TYPE_SECONDARY = 'secondary';
+    const ROOM_TYPE_NEW = 'new';
 
     const HTTP_CODE_SUCCESS = 200;
     const HTTP_CODE_FAIL = 500;
@@ -95,7 +102,6 @@ class CalculateController extends AbstractController
         $roomType->setName($data['room-type']);
         $errors = $validator->validate($roomType);
         if ($errors->count() > 0) {
-            echo 1;
             return false;
         }
 
@@ -103,7 +109,6 @@ class CalculateController extends AbstractController
         $repairType->setName($data['repair-type']);
         $errors = $validator->validate($repairType);
         if ($errors->count() > 0) {
-            echo 1;
             return false;
         }
 
@@ -111,7 +116,6 @@ class CalculateController extends AbstractController
         $realtyType->setName($data['realty-type']);
         $errors = $validator->validate($realtyType);
         if ($errors->count() > 0) {
-            echo 1;
             return false;
         }
 
@@ -141,8 +145,62 @@ class CalculateController extends AbstractController
 
     private function calculate(array $data): float
     {
-        echo 0;
-        return 0;
+        $squareArea = $data['area-square'];
+        $repairClass = $data['repair-class'];
+        $realtyType = $data['realty-type'];
+        $roomType = $data['room-type'];
+        $totalCost = 0;
+
+        if ($realtyType == self::REALTY_TYPE_FLAT) {
+            if ($roomType == self::ROOM_TYPE_SECONDARY) {
+                $totalCost += 150 * 1000;
+            }
+            if ($squareArea < 25) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 120 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 170 * 1000 * $squareArea;
+                }
+            }elseif ($squareArea < 30) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 110 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 160 * 1000 * $squareArea;
+                }
+            }elseif ($squareArea < 35) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 100 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 150 * 1000 * $squareArea;
+                }
+            }elseif ($squareArea < 70) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 95 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 130 * 1000 * $squareArea;
+                }
+            }elseif ($squareArea < 100) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 90 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 120 * 1000 * $squareArea;
+                }
+            }else {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 85 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 115 * 1000 * $squareArea;
+                }
+            }
+        }else{
+            if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                $totalCost += 4000 * $squareArea;
+            } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                $totalCost += 6000 * $squareArea;
+            }
+        }
+
+        return $totalCost;
     }
 
     private function replace(string $message, array $data, float $result): string
