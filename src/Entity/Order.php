@@ -1,0 +1,158 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\OrderRepository;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+#[ORM\Table(name: 'orders')]
+#[ORM\Entity(repositoryClass: OrderRepository::class)]
+class Order
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id',nullable: false)]
+    private ?User $user_id = null;
+
+    #[ORM\ManyToOne(targetEntity: RealtyType::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?RealtyType $property_type = null;
+
+    #[ORM\Column]
+    #[Assert\Type('float')]
+    #[Assert\NotNull]
+    #[Assert\Positive]
+    #[Assert\LessThanOrEqual(3000)]
+    private ?float $square = null;
+
+    #[ORM\ManyToOne(targetEntity: RoomType::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?RoomType $room_type = null;
+
+    #[ORM\ManyToOne(targetEntity: RepairType::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?RepairType $repair_class = null;
+
+    #[ORM\Column(type: Types::BIGINT)]
+    private ?string $cost = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $created_at = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $done_at = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(string $id): static
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(?User $user_id): static
+    {
+        $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    public function getPropertyType(): ?RealtyType
+    {
+        return $this->property_type;
+    }
+
+    public function setPropertyType(?RealtyType $property_type): static
+    {
+        $this->property_type = $property_type;
+
+        return $this;
+    }
+
+    public function getSquare(): ?float
+    {
+        return $this->square;
+    }
+
+    public function setSquare(float $square): static
+    {
+        $this->square = $square;
+
+        return $this;
+    }
+
+    public function getRoomType(): ?RoomType
+    {
+        return $this->room_type;
+    }
+
+    public function setRoomType(?RoomType $room_type): static
+    {
+        $this->room_type = $room_type;
+
+        return $this;
+    }
+
+    public function getRepairClass(): ?RepairType
+    {
+        return $this->repair_class;
+    }
+
+    public function setRepairClass(?RepairType $repair_class): static
+    {
+        $this->repair_class = $repair_class;
+
+        return $this;
+    }
+
+    public function getCost(): ?string
+    {
+        return $this->cost;
+    }
+
+    public function setCost(string $cost): static
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): static
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getDoneAt(): ?\DateTimeInterface
+    {
+        return $this->done_at;
+    }
+
+    public function setDoneAt(?\DateTimeInterface $done_at): static
+    {
+        $this->done_at = $done_at;
+
+        return $this;
+    }
+}
