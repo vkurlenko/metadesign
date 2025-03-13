@@ -4,23 +4,39 @@ namespace App\Entity;
 
 use App\Repository\OrderRepository;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[ORM\Table(name: 'orders')]
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 class Order
 {
+    const REALTY_TYPE_FLAT = 'flat';
+    const REALTY_TYPE_HOUSE = 'house';
+    const REALTY_TYPE_COMMERCE = 'commerce';
+    const REPAIR_TYPE_COMFORT = 'comfort';
+    const REPAIR_TYPE_BUSINESS = 'business';
+    const REPAIR_TYPE_PREMIUM = 'premium';
+    const ROOM_TYPE_SECONDARY = 'secondary';
+    const ROOM_TYPE_NEW = 'new';
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(nullable: false)]
+    private ?int $id;
 
-    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\ManyToOne(targetEntity: User::class,
+        cascade: ['persist'],
+        inversedBy: 'orders')]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id',nullable: false)]
     private ?User $user_id = null;
 
-    #[ORM\ManyToOne(targetEntity: RealtyType::class)]
+    #[ORM\ManyToOne(targetEntity: RealtyType::class,
+        cascade: ['persist'],
+        inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private ?RealtyType $property_type = null;
 
@@ -31,11 +47,15 @@ class Order
     #[Assert\LessThanOrEqual(3000)]
     private ?float $square = null;
 
-    #[ORM\ManyToOne(targetEntity: RoomType::class)]
+    #[ORM\ManyToOne(targetEntity: RoomType::class,
+        cascade: ['persist'],
+        inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private ?RoomType $room_type = null;
 
-    #[ORM\ManyToOne(targetEntity: RepairType::class)]
+    #[ORM\ManyToOne(targetEntity: RepairType::class,
+        cascade: ['persist'],
+        inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private ?RepairType $repair_class = null;
 
@@ -48,6 +68,45 @@ class Order
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $done_at = null;
 
+    public function __construct($data, EntityManagerInterface $entityManager)
+    {
+        $roomType = $entityManager->getRepository(RoomType::class)->findOneBy(['name' => $data['room-type']])
+            ? $entityManager->getRepository(RoomType::class)->findOneBy(['name' => $data['room-type']])
+            : new RoomType();
+        if (!$roomType->getName()){
+            $roomType->setName($data['room-type']);
+        }
+
+        $repairType = $entityManager->getRepository(RepairType::class)->findOneBy(['name' => $data['repair-type']])
+            ? $entityManager->getRepository(RepairType::class)->findOneBy(['name' => $data['repair-type']])
+            : new RepairType();
+        if (!$repairType->getName()) {
+            $repairType->setName($data['repair-type']);
+        }
+
+        $realtyType = $entityManager->getRepository(RealtyType::class)->findOneBy(['name' => $data['realty-type']])
+            ? $entityManager->getRepository(RealtyType::class)->findOneBy(['name' => $data['realty-type']])
+            : new RealtyType();
+        if (!$realtyType->getName()) {
+            $realtyType->setName($data['realty-type']);
+        }
+
+        $user = $entityManager->getRepository(User::class)->findOneBy(['phone_number' => preg_replace('/[^0-9]/', '', $data['phone'])])
+            ? $entityManager->getRepository(User::class)->findOneBy(['phone_number' => preg_replace('/[^0-9]/', '', $data['phone'])])
+            : new User();
+        if (!$user->getPhoneNumber()) {
+            $user->setPhoneNumber(preg_replace('/[^0-9]/', '', $data['phone']));
+        }
+
+        $squareArea = $data['area-square'];
+
+        $this->setRoomType($roomType);
+        $this->setRepairClass($repairType);
+        $this->setPropertyType($realtyType);
+        $this->setUserId($user);
+        $this->setSquare($squareArea);
+        $this->setCreatedAt(new \DateTime('now'));
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -154,5 +213,76 @@ class Order
         $this->done_at = $done_at;
 
         return $this;
+    }
+
+    public function validate(ValidatorInterface $validator): array
+    {
+        $errors = [];
+        array_push($errors,
+            $validator->validate($this->getRoomType()),
+            $validator->validate($this->getRepairClass()),
+            $validator->validate($this->getPropertyType()),
+            $validator->validate($this->getUserId()),
+            $validator->validate($this));
+        return $errors;
+    }
+
+    public function calculateCost(): void
+    {
+        $squareArea = $this->getSquare();
+        $repairClass = $this->getRepairClass()->getName();
+        $realtyType = $this->getPropertyType()->getName();
+        $roomType = $this->getRoomType()->getName();
+        $totalCost = 0;
+
+        if ($realtyType == self::REALTY_TYPE_FLAT) {
+            if ($roomType == self::ROOM_TYPE_SECONDARY) {
+                $totalCost += 150 * 1000;
+            }
+            if ($squareArea < 25) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 120 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 170 * 1000 * $squareArea;
+                }
+            }elseif ($squareArea < 30) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 110 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 160 * 1000 * $squareArea;
+                }
+            }elseif ($squareArea < 35) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 100 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 150 * 1000 * $squareArea;
+                }
+            }elseif ($squareArea < 70) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 95 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 130 * 1000 * $squareArea;
+                }
+            }elseif ($squareArea < 100) {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 90 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 120 * 1000 * $squareArea;
+                }
+            }else {
+                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                    $totalCost += 85 * 1000 * $squareArea;
+                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                    $totalCost += 115 * 1000 * $squareArea;
+                }
+            }
+        }else{
+            if ($repairClass == self::REPAIR_TYPE_COMFORT) {
+                $totalCost += 4000 * $squareArea;
+            } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
+                $totalCost += 6000 * $squareArea;
+            }
+        }
+        $this->setCost($totalCost);
     }
 }
