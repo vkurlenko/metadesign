@@ -18,10 +18,10 @@ class RoomType
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(nullable: false)]
+    private ?int $id;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     #[Assert\Choice(
         choices: ['new', 'secondary']
     )]

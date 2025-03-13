@@ -13,8 +13,8 @@ class User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(nullable: false)]
+    private ?int $id;
 
     #[ORM\Column(nullable: true)]
     private ?int $chat_id = null;
@@ -25,7 +25,7 @@ class User
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $last_name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     #[Assert\Length(min: 10, max: 10)]
     #[Assert\Regex(
         '/^\d+$/',
