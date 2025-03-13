@@ -18,13 +18,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class CalculateController extends AbstractController
 {
     const REALTY_TYPE_FLAT = 'flat';
-    const REALTY_TYPE_HOUSE = 'house';
-    const REALTY_TYPE_COMMERCE = 'commerce';
-    const REPAIR_TYPE_COMFORT = 'comfort';
-    const REPAIR_TYPE_BUSINESS = 'business';
-    const REPAIR_TYPE_PREMIUM = 'premium';
-    const ROOM_TYPE_SECONDARY = 'secondary';
-    const ROOM_TYPE_NEW = 'new';
+
 
     const HTTP_CODE_SUCCESS = 200;
     const HTTP_CODE_FAIL = 500;
@@ -63,14 +57,17 @@ class CalculateController extends AbstractController
     {
         $data = $request->getPayload()->all();
 
-        if ($this->isValid($data, $validator, $entityManager)) {
-            $result = $this->calculate($data);
+        $order = new Order($data, $entityManager);
+        $validationResult = $order->validate($validator);
+
+        if ($this->isValid($validationResult)) {
+            $order->calculateCost();
+            $entityManager->persist($order);
+            $entityManager->flush();
 
             $message = $request->getPayload()->get('realty-type') == self::REALTY_TYPE_FLAT
                 ? self::MESSAGE_SUCCESS_FLAT
                 : self::MESSAGE_SUCCESS_COMMERCE;
-
-            $message = $this->replace($message, $data, $result);
 
             $message = nl2br($message);
 
@@ -78,133 +75,29 @@ class CalculateController extends AbstractController
                 'data'    => $data,
                 'code'    => self::HTTP_CODE_SUCCESS,
                 'result'  => 'success',
-                'message' => $message
+                'message' => $message,
+                'order' => $order
             ];
         } else {
             $response = [
                 'data'    => $data,
                 'code'    => self::HTTP_CODE_FAIL,
                 'result'  => 'fail',
-                'message' => self::MESSAGE_FAIL
+                'message' => self::MESSAGE_FAIL,
+                'errors'  => $validationResult
             ];
         }
 
         return $this->json($response);
     }
 
-    /**
-     * @param $data
-     * @return bool
-     */
-    private function isValid($data, ValidatorInterface $validator, EntityManagerInterface $entityManager): bool
+    private function isValid(array $validationResult): bool
     {
-        $roomType = new RoomType();
-        $roomType->setName($data['room-type']);
-        $errors = $validator->validate($roomType);
-        if ($errors->count() > 0) {
-            return false;
-        }
-
-        $repairType = new RepairType();
-        $repairType->setName($data['repair-type']);
-        $errors = $validator->validate($repairType);
-        if ($errors->count() > 0) {
-            return false;
-        }
-
-        $realtyType = new RealtyType();
-        $realtyType->setName($data['realty-type']);
-        $errors = $validator->validate($realtyType);
-        if ($errors->count() > 0) {
-            return false;
-        }
-
-        $user = new User();
-        $user->setPhoneNumber(preg_replace('/[^0-9]/', '', $data['phone']));
-        $errors = $validator->validate($user);
-        if ($errors->count() > 0) {
-            return false;
-        }
-
-        $squareArea = $data['area-square'];
-
-        $order = new Order();
-        $order->setRoomType($roomType);
-        $order->setRepairClass($repairType);
-        $order->setPropertyType($realtyType);
-        $order->setUserId($user);
-        $order->setSquare($squareArea);
-        $order->setCreatedAt(new \DateTime('now'));
-        $errors = $validator->validate($order);
-        if ($errors->count() > 0) {
-            return false;
-        }
-
-        return True;
-    }
-
-    private function calculate(array $data): float
-    {
-        $squareArea = $data['area-square'];
-        $repairClass = $data['repair-class'];
-        $realtyType = $data['realty-type'];
-        $roomType = $data['room-type'];
-        $totalCost = 0;
-
-        if ($realtyType == self::REALTY_TYPE_FLAT) {
-            if ($roomType == self::ROOM_TYPE_SECONDARY) {
-                $totalCost += 150 * 1000;
-            }
-            if ($squareArea < 25) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 120 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 170 * 1000 * $squareArea;
-                }
-            }elseif ($squareArea < 30) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 110 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 160 * 1000 * $squareArea;
-                }
-            }elseif ($squareArea < 35) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 100 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 150 * 1000 * $squareArea;
-                }
-            }elseif ($squareArea < 70) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 95 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 130 * 1000 * $squareArea;
-                }
-            }elseif ($squareArea < 100) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 90 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 120 * 1000 * $squareArea;
-                }
-            }else {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 85 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 115 * 1000 * $squareArea;
-                }
-            }
-        }else{
-            if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                $totalCost += 4000 * $squareArea;
-            } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                $totalCost += 6000 * $squareArea;
+        foreach ($validationResult as $error) {
+            if (count($error)) {
+                return false;
             }
         }
-
-        return $totalCost;
-    }
-
-    private function replace(string $message, array $data, float $result): string
-    {
-            return str_replace(array_keys($data), array_values($data), $message);
+        return true;
     }
 }
