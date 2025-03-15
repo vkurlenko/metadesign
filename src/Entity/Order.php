@@ -232,10 +232,8 @@ class Order
     public function calculateCost(): void
     {
         $squareArea = $this->getSquare();
-        $repairClass = $this->getRepairClass()->getName();
         $realtyType = $this->getPropertyType()->getName();
         $roomType = $this->getRoomType()->getName();
-
 
         if ($realtyType == self::REALTY_TYPE_FLAT) {
             if ($roomType == self::ROOM_TYPE_SECONDARY) {
