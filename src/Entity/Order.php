@@ -6,6 +6,7 @@ use App\Repository\OrderRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\NoReturn;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -227,62 +228,45 @@ class Order
         return $errors;
     }
 
+    #[NoReturn]
     public function calculateCost(): void
     {
         $squareArea = $this->getSquare();
         $repairClass = $this->getRepairClass()->getName();
         $realtyType = $this->getPropertyType()->getName();
         $roomType = $this->getRoomType()->getName();
-        $totalCost = 0;
+
 
         if ($realtyType == self::REALTY_TYPE_FLAT) {
             if ($roomType == self::ROOM_TYPE_SECONDARY) {
-                $totalCost += 150 * 1000;
+                $this->setCost(150 * 1000);
             }
             if ($squareArea < 25) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 120 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 170 * 1000 * $squareArea;
-                }
+                $this->calculateCostByRepairType(120, 170);
             }elseif ($squareArea < 30) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 110 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 160 * 1000 * $squareArea;
-                }
+                $this->calculateCostByRepairType(110, 160);
             }elseif ($squareArea < 35) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 100 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 150 * 1000 * $squareArea;
-                }
+                $this->calculateCostByRepairType(100, 150);
             }elseif ($squareArea < 70) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 95 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 130 * 1000 * $squareArea;
-                }
+                $this->calculateCostByRepairType(95, 130);
             }elseif ($squareArea < 100) {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 90 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 120 * 1000 * $squareArea;
-                }
+                $this->calculateCostByRepairType(90, 120);
             }else {
-                if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                    $totalCost += 85 * 1000 * $squareArea;
-                } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                    $totalCost += 115 * 1000 * $squareArea;
-                }
+                $this->calculateCostByRepairType(85, 115);
             }
         }else{
-            if ($repairClass == self::REPAIR_TYPE_COMFORT) {
-                $totalCost += 4000 * $squareArea;
-            } elseif ($repairClass == self::REPAIR_TYPE_BUSINESS) {
-                $totalCost += 6000 * $squareArea;
-            }
+            $this->calculateCostByRepairType(4, 6);
         }
-        $this->setCost($totalCost);
+        dd($this);
+    }
+
+    private function calculateCostByRepairType(int $multiplierComfort, int $multiplierBusiness) : void
+    {
+        if ($this->repair_class->getName() == self::REPAIR_TYPE_COMFORT) {
+            $this->setCost($multiplierComfort * 1000 * $this->getSquare());
+        } elseif ($this->repair_class->getName() == self::REPAIR_TYPE_BUSINESS) {
+            $this->setCost($multiplierBusiness * 1000 * $this->getSquare());
+        }
+
     }
 }
