@@ -257,7 +257,6 @@ class Order
         }else{
             $this->calculateCostByRepairType(4, 6);
         }
-        dd($this);
     }
 
     private function calculateCostByRepairType(int $multiplierComfort, int $multiplierBusiness) : void
