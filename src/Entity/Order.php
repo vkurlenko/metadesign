@@ -26,7 +26,7 @@ class Order
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(nullable: false)]
+    #[ORM\Column(nullable: false)] // TODO если !nullable, то private int $id, а не ?int $id;
     private ?int $id;
 
     #[ORM\ManyToOne(targetEntity: User::class,
@@ -71,16 +71,20 @@ class Order
 
     public function __construct($data, EntityManagerInterface $entityManager)
     {
-        $roomType = $entityManager->getRepository(RoomType::class)->findOneBy(['name' => $data['room-type']])
-            ? $entityManager->getRepository(RoomType::class)->findOneBy(['name' => $data['room-type']])
-            : new RoomType();
-        if (!$roomType->getName()){
-            $roomType->setName($data['room-type']);
-        }
+        /* TODO В Entity никакой логики быть не должно, все вычисления вынести в контроллер или сервис */
 
+//        $roomType = $entityManager->getRepository(RoomType::class)->findOneBy(['name' => $data['room-type']])
+//            ? $entityManager->getRepository(RoomType::class)->findOneBy(['name' => $data['room-type']])
+//            : new RoomType();
+//
+//        if (!$roomType->getName()){
+//            $roomType->setName($data['room-type']);
+//        }
+//
         $repairType = $entityManager->getRepository(RepairType::class)->findOneBy(['name' => $data['repair-type']])
             ? $entityManager->getRepository(RepairType::class)->findOneBy(['name' => $data['repair-type']])
             : new RepairType();
+
         if (!$repairType->getName()) {
             $repairType->setName($data['repair-type']);
         }
@@ -88,6 +92,7 @@ class Order
         $realtyType = $entityManager->getRepository(RealtyType::class)->findOneBy(['name' => $data['realty-type']])
             ? $entityManager->getRepository(RealtyType::class)->findOneBy(['name' => $data['realty-type']])
             : new RealtyType();
+
         if (!$realtyType->getName()) {
             $realtyType->setName($data['realty-type']);
         }
@@ -95,19 +100,21 @@ class Order
         $user = $entityManager->getRepository(User::class)->findOneBy(['phone_number' => preg_replace('/[^0-9]/', '', $data['phone'])])
             ? $entityManager->getRepository(User::class)->findOneBy(['phone_number' => preg_replace('/[^0-9]/', '', $data['phone'])])
             : new User();
+
         if (!$user->getPhoneNumber()) {
             $user->setPhoneNumber(preg_replace('/[^0-9]/', '', $data['phone']));
         }
 
         $squareArea = $data['area-square'];
 
-        $this->setRoomType($roomType);
+//        $this->setRoomType($roomType);
         $this->setRepairClass($repairType);
         $this->setPropertyType($realtyType);
         $this->setUserId($user);
         $this->setSquare($squareArea);
         $this->setCreatedAt(new \DateTime('now'));
     }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -228,6 +235,7 @@ class Order
         return $errors;
     }
 
+    /* TODO в контроллер или сервис */
     #[NoReturn]
     public function calculateCost(): void
     {
@@ -257,6 +265,7 @@ class Order
         }
     }
 
+    /* TODO Вынести в контроллер или сервис */
     private function calculateCostByRepairType(int $multiplierComfort, int $multiplierBusiness) : void
     {
         if ($this->repair_class->getName() == self::REPAIR_TYPE_COMFORT) {

@@ -3,6 +3,8 @@
 namespace App\Controller\Api;
 
 use App\Entity\Order;
+use App\Entity\RoomType;
+use App\Repository\RoomTypeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,8 +66,21 @@ class CalculateController extends AbstractController
         "comfort" => "Комфорт",
         "premium" => "Премиум"
     );
+
+    /**
+     * @var RoomTypeRepository
+     */
+    public RoomTypeRepository $roomTypeRepository;
+
+    public function __construct(RoomTypeRepository $roomTypeRepository)
+    {
+        $this->roomTypeRepository = $roomTypeRepository;
+    }
+
     /**
      * @param Request $request
+     * @param ValidatorInterface $validator
+     * @param EntityManagerInterface $entityManager
      * @return Response
      */
     #[Route('/api/calculate', name: 'calculate')]
@@ -74,6 +89,21 @@ class CalculateController extends AbstractController
         $data = $request->getPayload()->all();
 
         $order = new Order($data, $entityManager);
+
+        // TODO вычисление свойства объекта можно представить в таком виде, более краткая и понятная запись, а лучше вообще вынести в отдельный метод.
+        // room-type -->
+        $roomType = $this->roomTypeRepository->findOneBy(['name' => $data['room-type']]);
+
+        // TODO по идее эта проверка вообще лишняя, т.к. ты заранее знаешь возможные значения поля 'room-type' и знаешь, что такое значение есть в БД.
+        // TODO но для уверенности можно (нужно) сделать еще валидатор входных данных, получаемых с фронта. Тогда этот блок будет не нужным.
+        if (! $roomType instanceof RoomType) {
+            $roomType = new RoomType();
+            $roomType->setName(key_exists('room-type', $data) ? $data['room-type'] : '');
+        }
+
+        $order->setRoomType($roomType);
+        // <-- room-type
+
         $validationResult = $order->validate($validator);
 
         if ($this->isValid($validationResult)) {
