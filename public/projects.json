@@ -4,6 +4,8 @@
       "identifier": "architect",
       "dir": "/img/projects/architect",
       "name": "ЖК Архитектор",
+      "city": "Москва",
+      "text": "75 кв.м.",
       "description": "Описание проекта",
       "items": []
     },
@@ -11,6 +13,7 @@
       "identifier": "forst",
       "dir": "/img/projects/forst",
       "name": "ЖК Forst",
+      "city": "Москва",
       "text": "27,5 кв.м.",
       "description": "Описание проекта",
       "items": []
@@ -19,6 +22,8 @@
       "identifier": "kit",
       "dir": "/img/projects/kit",
       "name": "ЖК КИТ",
+      "city": "Москва",
+      "text": "60 кв.м.",
       "description": "Описание проекта",
       "items": []
     },
@@ -26,6 +31,8 @@
       "identifier": "odintsovo",
       "dir": "/img/projects/odintsovo",
       "name": "Одинцово",
+      "city": "Одинцово",
+      "text": "38 кв.м.",
       "description": "Описание проекта",
       "items": []
     },
@@ -33,6 +40,8 @@
       "identifier": "putilkovo",
       "dir": "/img/projects/putilkovo",
       "name": "ЖК Большое Путилково",
+      "city": "Москва",
+      "text": "44 кв.м.",
       "description": "Описание проекта",
       "items": []
     },
@@ -40,20 +49,26 @@
       "identifier": "sky_view",
       "dir": "/img/projects/sky_view",
       "name": "ЖК Sky View",
+      "city": "Москва",
+      "text": "94,2 кв.м.",
       "description": "Описание проекта",
       "items": []
     },
     {
       "identifier": "tricolor_107",
       "dir": "/img/projects/tricolor_107",
-      "name": "Жк Триколор",
+      "name": "ЖК Триколор",
+      "city": "Москва",
+      "text": "107 кв.м.",
       "description": "Описание проекта",
       "items": []
     },
     {
       "identifier": "tricolor_128",
       "dir": "/img/projects/tricolor_128",
-      "name": "Жк Триколор",
+      "name": "ЖК Триколор",
+      "city": "Москва",
+      "text": "128 кв.м.",
       "description": "Описание проекта",
       "items": []
     }
