@@ -98,7 +98,7 @@ class PageController extends AbstractController
      * @param string $identifier
      * @return Response
      */
-    #[Route('/project')]
+    #[Route('/project/{identifier}')]
     public function project(string $identifier): Response
     {
         $project = $this->projectController->getProject(FileService::TYPE_PROJECTS, $identifier);
@@ -106,6 +106,8 @@ class PageController extends AbstractController
         $data = [
             'identifier'  => $project->getIdentifier(),
             'name'        => $project->getName(),
+            'city'        => $project->getCity(),
+            'text'      => $project->getText(),
             'description' => $project->getDescription(),
             'files'       => $project->getFiles()
         ];
