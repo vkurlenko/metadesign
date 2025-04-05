@@ -6,9 +6,13 @@
 
     <!-- Page header section start -->
     <section class="page-header-section set-bg section-about" data-setbg="/img/bg_MD_3.jpg">
-        <div style="">
-            <div class="container">
-                <h1 class="header-title">{{ PROJECT.name }}</h1>
+        <div class="container project-content">
+            <h1 class="header-title" style="margin-bottom: 1.5rem">{{ PROJECT.name }}</h1>
+            <div>
+                <p style="color: #baff00; margin-bottom: 0">{{ PROJECT.text }}</p>
+                {% if PROJECT.city != "Одинцово" %}
+                    <h2 style="color: #FFFFFF; font-size: 30px">{{ PROJECT.city }}</h2>
+                {% endif %}
             </div>
         </div>
     </section>
