@@ -5,8 +5,11 @@
                 <span style="font-size: 1.5rem">
                     {{  loop.index }}. {{ ITEM.title }}
                 </span>
+
+                {%  if loop.index > 1 %}
                 <span class="toggle-down" style="font-size: 2rem">+</span>
                 <span class="toggle-up" style="display: none; font-size: 2rem">-</span>
+                {% endif %}
             </h3>
             <div class="service-item-wrapper">
                 <p>

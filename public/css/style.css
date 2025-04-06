@@ -1982,11 +1982,11 @@ ol {
 	display: inline-block;
 }
 
-.service-page h3 {
-	cursor: pointer
+.service-page  > div:not(:first-child) h3 {
+	cursor: pointer;
 }
 
-.service-item-wrapper {
+#accordion > div:not(:first-child) .service-item-wrapper {
 	display: none;
 }
 
