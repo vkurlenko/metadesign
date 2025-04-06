@@ -19,3 +19,8 @@
 /public/img/blog/
 /public/img/clients/
 /public/img/team/
+
+/.idea
+*.iml
+.idea
+out
