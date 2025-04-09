@@ -1993,7 +1993,7 @@ ol {
 .service-item-wrapper .service-item {
 	display: flex;
 	flex-flow: row nowrap;
-	background: #222;
+	background: #333;
 	padding: 1rem;
 }
 
@@ -2022,7 +2022,7 @@ ol {
 	display: flex;
 	align-items: center;
 	position: fixed;
-	bottom: 20vh;
+	bottom: 18vh;
 	background-color: var(--lime);
 	right: 0;
 	padding: 1rem;
