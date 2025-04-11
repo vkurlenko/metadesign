@@ -8,7 +8,8 @@
     </span>
 </p>
 
-<p>
+<div class="d-flex">
+    <p>
     <ul>
         <li>Демонтажные работы  (при необходимости)</li>
         <li>Устройство перегородок</li>
@@ -32,7 +33,16 @@
         <li>Финишная отделка</li>
         <li>Клининг по окончании ремонта</li>
     </ul>
-</p>
+    </p>
+    <div class="ml-6 mt-4 mr-5 w-50 float-right">
+        {% for IMAGE in SERVICE.files %}
+            <img src="{{ IMAGE }}" alt="">
+        {% endfor %}
+    </div>
+</div>
+
+
+
 
 <p>
     <span>

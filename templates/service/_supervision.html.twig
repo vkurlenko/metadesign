@@ -8,6 +8,14 @@
     </span>
 </p>
 
+<div class="d-flex">
+        {% for IMAGE in SERVICE.files|slice(0, 4) %}
+            <div class="p-1">
+                <img src="{{ IMAGE }}" alt="text" >
+            </div>
+        {% endfor %}
+</div>
+
 <p>
     <span>
         Включает в себя:
