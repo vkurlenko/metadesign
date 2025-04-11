@@ -15,6 +15,9 @@
                 <p>
                     <div class="service-item">
                         <div class="service-item-description">
+                            {% if not ITEM.description %}
+                                <a href="/service/design_project" class="site-btn sb-light ml-5 mr-0 my-5" style="color: #FFFFFF">Подробнее о подготовке дизайн проекта</a>
+                            {% endif %}
                             <span>{{ ITEM.description }}</span>
                         </div>
                         <div class="service-item-image"
