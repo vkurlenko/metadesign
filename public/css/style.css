@@ -120,7 +120,7 @@ ol {
 --------------------------*/
 .sp-title {
 	font-size: 3.75rem;
-	margin-bottom: 2.5rem;
+	margin-bottom: 1rem;
 }
 
 .sp-title span {
@@ -135,6 +135,14 @@ ol {
 	color: #000;
 	text-transform: uppercase;
 	font-size: 2rem;
+}
+
+.rep-btn{
+	display: flex;
+	align-items: center;
+	height: 64px;
+	flex-shrink: 1;
+	flex-grow: 1;
 }
 
 .pt100 {
@@ -906,7 +914,7 @@ ol {
 	width: 50%;
 	height: 100%;
 	left: 0;
-	background-image: url("../img/cta-img.jpg");
+	background-image: url("../img/Ракурс на стол и зону тв.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -2479,4 +2487,6 @@ ol {
 	.social-links a {
 		font-size: 2.5rem;
 	}
+
+
 }
