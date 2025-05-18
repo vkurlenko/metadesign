@@ -12,9 +12,9 @@
     {
       "group": "projects",
       "route": "project",
-      "id": "forst",
-      "img": "img/projects/forst/1.jpg",
-      "title": "ЖК Forst",
+      "id": "frost",
+      "img": "img/projects/frost/1.jpg",
+      "title": "ЖК Frost",
       "text": "27,5 кв.м.",
       "link": ""
     },

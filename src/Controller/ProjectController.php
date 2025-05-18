@@ -41,6 +41,8 @@ class ProjectController extends AbstractController
             $project->setFiles($projectData['files']);
             $project->setItems($projectData['items']);
             $project->setDir($projectData['dir']);
+            $project->setUrl($projectData['url']);
+            $project->setTitle($projectData['title']);
         }
 
         return $project;

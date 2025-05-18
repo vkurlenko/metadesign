@@ -137,7 +137,9 @@ class PageController extends AbstractController
             'identifier'  => $project->getIdentifier(),
             'name'        => $project->getName(),
             'description' => $project->getDescription(),
-            'files'       => $project->getFiles()
+            'files'       => $project->getFiles(),
+            'url'         => $project->getUrl(),
+            'title'       => $project->getTitle()
         ];
 
         $this->vars = array_merge(

@@ -12,6 +12,10 @@ class Project
 
     private ?string $description = null;
 
+    private ?string $url = null;
+
+    private ?string $title = null;
+
     private ?string $city = null;
     private ?string $text = null;
     private ?array $files = null;
@@ -110,4 +114,25 @@ class Project
 
         return $this;
     }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): void
+    {
+        $this->url = $url;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
+
 }

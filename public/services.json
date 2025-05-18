@@ -9,6 +9,8 @@
       "dir": "/img/service/design_project",
       "name": "Разработка дизайн проекта",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "Подписываем договор",
@@ -61,6 +63,8 @@
       "dir": "/img/service/repair",
       "name": "Ремонт ПОД КЛЮЧ",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "Подготовка дизайн-проекта",
@@ -113,6 +117,8 @@
       "dir": "/img/service/works",
       "name": "Ремонтно-строительные работы",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "",
@@ -130,6 +136,8 @@
       "dir": "/img/service/equipment",
       "name": "Комплектация",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "",
@@ -146,6 +154,8 @@
       "dir": "/img/service/supervision",
       "name": "Авторский надзор",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "",
@@ -162,6 +172,8 @@
       "dir": "/img/service/consulting",
       "name": "Консультация",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "",
