@@ -92,14 +92,14 @@ class CalculateController extends AbstractController
             $response = [
                 'data'    => $data,
                 'code'    => self::HTTP_CODE_SUCCESS,
-                'result'  => 'success',
+                'result'  => 'true',
                 'message' => $message
             ];
         } else {
             $response = [
                 'data'    => $data,
                 'code'    => self::HTTP_CODE_FAIL,
-                'result'  => 'fail',
+                'result'  => 'false',
                 'message' => self::MESSAGE_FAIL,
                 'errors'  => $validationResult
             ];
