@@ -1,6 +1,7 @@
 <?php
 
 use App\Controller\Api\CalculateController;
+use App\Controller\Api\FeedbackController;
 use App\Controller\PageController;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
@@ -33,5 +34,9 @@ return function (RoutingConfigurator $routes): void {
     // Api
     $routes->add('calculate', '/api/calculate')
         ->controller([CalculateController::class, 'index'])
+    ;
+
+    $routes->add('feedback', '/api/feedback')
+        ->controller([FeedbackController::class, 'index'])
     ;
 };
