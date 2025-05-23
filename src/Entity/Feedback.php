@@ -24,7 +24,7 @@ class Feedback
 
     #[ORM\ManyToOne(targetEntity: ServiceType::class,
         cascade: ['persist'],
-        inversedBy: 'feedbacks')]
+        inversedBy: 'feedback')]
     #[ORM\JoinColumn(nullable: false)]
     private ?ServiceType $service_type = null;
 
@@ -51,13 +51,11 @@ class Feedback
         if (!$user->getPhoneNumber()) {
             $user->setPhoneNumber(preg_replace('/[^0-9]/', '', $data['phone']));
         }
-
-        $serviceType = $entityManager->getRepository(ServiceType::class)->findOneBy(['name' => $data['service_type']])
-            ? $entityManager->getRepository(ServiceType::class)->findOneBy(['name' => $data['service_type']])
-            : new ServiceType();
-        if (!$user->getServiceType()) {
-            $user->setServiceType($serviceType);
+        if (!$user->getFirstName()) {
+            $user->setFirstName($data['user_name']);
         }
+
+        $serviceType = $entityManager->getRepository(ServiceType::class)->findOneBy(['name' => $data['service_type']]);
 
         $this->setUserId($user);
         $this->setServiceType($serviceType);
