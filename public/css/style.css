@@ -143,7 +143,29 @@ ol {
 	height: 64px;
 	flex-shrink: 1;
 	flex-grow: 1;
+	cursor: pointer;
 }
+
+
+.pdf-link{
+	display: flex;
+	color: #333333;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 1.3rem;
+	padding: 4px 12px;
+}
+
+.pdf-link svg{
+	width: 1.8rem;
+	height: 1.8rem;
+}
+
+.pdf-link:hover {
+	color: #1b1c1c;
+	text-decoration: underline;
+}
+
 
 .pt100 {
 	padding-top: 100px;
