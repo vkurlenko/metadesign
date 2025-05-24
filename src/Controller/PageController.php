@@ -175,6 +175,15 @@ class PageController extends AbstractController
         return $this->render('service.html.twig', $this->vars);
     }
 
+    #[Route('/building')]
+    public function building(string $identifier): Response
+    {
+        $this->vars = array_merge(
+            $this->vars,
+            ['CURRENT_PAGE' => 'building']
+        );
+        return $this->render('building.html.twig', $this->vars);
+    }
     /**
      * @param string $filename
      * @return array

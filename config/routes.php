@@ -31,6 +31,10 @@ return function (RoutingConfigurator $routes): void {
         ->controller([PageController::class, 'service'])
     ;
 
+    $routes->add('building', '/building/{identifier}')
+        ->controller([PageController::class, 'building'])
+    ;
+
     // Api
     $routes->add('calculate', '/api/calculate')
         ->controller([CalculateController::class, 'index'])
