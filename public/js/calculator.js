@@ -43,7 +43,7 @@ $(document).ready(function () {
         let isValid = true;
 
         // Валидация полей на "пусто".
-        $.each($('select, input'), function (index, element) {
+        $.each($('#form-calculator select, #form-calculator input'), function (index, element) {
             let inputField = $(element);
             let value = inputField.val();
 
