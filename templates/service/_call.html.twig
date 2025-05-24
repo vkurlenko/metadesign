@@ -5,7 +5,7 @@
                 <h1 class="mb-3 text-center text-light">Есть вопрос про {{ SERVICE.text }}?</h1>
 
                 <div class="mb-3">
-                    <label for="user_name" class="form-label">Ваше имя</label>
+                    <label for="user_name" class="form-label" style="font-size: 1.5rem">Ваше имя</label>
                     <input type="text"
                            class="form-control"
                            id="user_name"
@@ -15,12 +15,12 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="phone" class="form-label">Телефон</label>
+                    <label for="phone" class="form-label" style="font-size: 1.5rem">Телефон</label>
                     <div class="input-group">
                         <span class="input-group-text">+7</span>
                         <input type="tel"
                                class="form-control"
-                               id="phone"
+                               id="phoneFeed"
                                name="phone"
                                aria-label="Номер телефона"
                                placeholder="(999) 999-99-99"
@@ -28,8 +28,8 @@
                     </div>
                 </div>
 
-                <div class="border-top pt-3">
-                    <label class="form-label">Удобный способ связи:</label>
+                <div class="border-top pt-3" >
+                    <label class="form-label" style="font-size: 1.5rem">Удобный способ связи:</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="contact-call" name="contact_method[]" value="phone_call">
                         <label class="form-check-label" for="contact-call">
@@ -53,7 +53,7 @@
                 <input type="hidden" name="service_type" value="{{ ID }}">
 
                 <div class="d-grid mt-4">
-                    <button type="submit" class="btn btn-primary py-2">Отправить</button>
+                    <button type="submit" id="btnFeedSubmit" class="btn btn-primary py-2">Отправить</button>
                 </div>
             </form>
         </div>

@@ -1,7 +1,14 @@
 $(document).ready(function () {
     const form = $('#form-call'),
-        inputPhone = $('#phone')
+        inputPhone = $('#phoneFeed'),
+        btnSubmit = $('#btnFeedSubmit')
     ;
+
+
+    btnSubmit.on('click', function () {
+        form.submit();
+    })
+
     applyInputMask (inputPhone);
 
     form.on('submit', function (event) {
