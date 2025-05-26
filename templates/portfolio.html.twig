@@ -33,8 +33,7 @@
                 <div class="grid-sizer"></div>
 
                 {% for ITEM in CARDS %}
-                    <div class="grid-item set-bg {{ ITEM.group }}" data-setbg="{{ ITEM.img }}">
-                        <a href="/{{ ITEM.route }}/{{ ITEM.id }}">
+                    <div class="grid-item set-bg {{ ITEM.group }}" data-setbg="{{ ITEM.img }}" onclick="window.location.href='/{{ ITEM.route }}/{{ ITEM.id }}'" style="cursor: pointer">
                             <div class="project-content">
                                 <h2>{{ ITEM.title }}</h2>
                                 <p>{{ ITEM.text }}</p>
@@ -46,7 +45,6 @@
                                     </a>
                                 {% endif %}
                             </div>
-                        </a>
                     </div>
                 {% endfor %}
 
