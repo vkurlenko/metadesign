@@ -50,6 +50,12 @@ $(document).ready(function () {
             data: formData,
             success: function(data) {
                 formReset();
+                const modal = new bootstrap.Modal(document.getElementById('successModal'));
+                modal.show();
+                setTimeout(() => modal.hide(), 2000);
+                document.querySelector('[data-bs-dismiss="modal"]').addEventListener('click', function() {
+                    modal.hide();
+                });
             },
             error: function (jqXHR, exception) {
                 let message = '';
