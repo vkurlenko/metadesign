@@ -56,7 +56,6 @@ class PageController extends AbstractController
     public function portfolio(): Response
     {
         $data = $this->getDataFromJson('portfolio.json');
-        shuffle($data['items']);
 
         $this->vars = array_merge(
             $this->vars,
@@ -82,7 +81,6 @@ class PageController extends AbstractController
             ['src' => '/img/about/IMG_6.jpg'],
             ['src' => '/img/about/IMG_7.jpg'],
             ['src' => '/img/about/IMG_8.jpg'],
-            ['src' => '/img/about/IMG_9.jpg'],
         ];
 
         $this->vars = array_merge(
@@ -109,7 +107,8 @@ class PageController extends AbstractController
             'city'        => $project->getCity(),
             'text'      => $project->getText(),
             'description' => $project->getDescription(),
-            'files'       => $project->getFiles()
+            'files'       => $project->getFiles(),
+            'dir'         => $project->getDir()
         ];
 
         $this->vars = array_merge(

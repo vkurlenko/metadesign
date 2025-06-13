@@ -4,13 +4,12 @@
 
 {% block content %}
 
-
     <!-- Page header section start -->
     <section class="page-header-section set-bg section-portfolio" data-setbg="img/bg_MD_3.jpg">
         <div>
-        <div class="container">
-            <h1 class="header-title">Портфолио</h1>
-        </div>
+            <div class="container">
+                <h1 class="header-title">Портфолио</h1>
+            </div>
         </div>
     </section>
     <!-- Page header section end -->
@@ -21,22 +20,23 @@
         <div class="container">
             <!-- portfolio filter menu -->
             <ul class="portfolio-filter">
-{#                <li class="filter" data-filter="*">Портфолио</li>#}
                 <li class="filter active" data-filter=".projects">Проекты</li>
                 <li class="filter" data-filter=".drawings">Чертежи</li>
                 <li class="filter" data-filter=".building">Стройка</li>
             </ul>
         </div>
-        <!-- portfolio items -->
-        <div class="portfolio-warp spad">
+
+        <div class="portfolio-warp spad default-view">
             <div id="portfolio">
                 <div class="grid-sizer"></div>
 
-                {% for ITEM in CARDS %}
-                    <div class="grid-item set-bg {{ ITEM.group }}" data-setbg="{{ ITEM.img }}" onclick="window.location.href='/{{ ITEM.route }}/{{ ITEM.id }}'" style="cursor: pointer">
-                            <div class="project-content">
-                                <h2>{{ ITEM.title }}</h2>
-                                <p>{{ ITEM.text }}</p>
+                    {% for ITEM in CARDS%}
+                        {% if ITEM.group != 'building' %}
+                            <div class="grid-item set-bg {{ ITEM.group }}" data-setbg="{{ ITEM.img }}">
+                                <div class="project-content" onclick="window.location.href='/{{ ITEM.route }}/{{ ITEM.id }}'" style="cursor: pointer">
+                                    <h2>{{ ITEM.title }}</h2>
+                                    <p>{{ ITEM.text }}</p>
+                                </div>
                                 {% if ITEM.link %}
                                     <a target="_blank" href="{{ ITEM.link.url }}" class="card-link">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="3rem" height="3rem">
@@ -45,12 +45,97 @@
                                     </a>
                                 {% endif %}
                             </div>
-                    </div>
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
 
             </div>
         </div>
+
+        <div class="building-special-view">
+            <div class="container text-center py-4">
+                <div class="building-description mb-5">
+                    <p>Сериал о полном цикле ремонтно-строительных работ в нашей студии архитектурного дизайна MetaDesign! Присоединяйтесь и в режиме реального времени наблюдайте, как мы превращаем бетонную коробку в уютное гнездышко. Приятного просмотра!</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <a href="https://www.youtube.com/embed/wPD_wxn4qVM" target="_blank" class="text-decoration-none">
+                                <img src="img/building/7.jpg" class="card-img-top" alt="Подоконники из камня и гидрозоляция санузла | МЕТАМОРФОЗЫ на 60 м2 | #7">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">Подоконники из камня и гидрозоляция санузла | МЕТАМОРФОЗЫ на 60 м2 | #7</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <a href="https://www.youtube.com/embed/WH45Pn6Ip_0" target="_blank" class="text-decoration-none">
+                                <img src="img/building/1.jpg" class="card-img-top" alt="МЕТАМОРФОЗЫ на 60 м2 | Сериал о ремонте под ключ | #1">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">МЕТАМОРФОЗЫ на 60 м2 | Сериал о ремонте под ключ | #1</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <a href="https://www.youtube.com/embed/XJfv7OOjcCI" target="_blank" class="text-decoration-none">
+                                <img src="img/building/11.jpg" class="card-img-top" alt="Розетки и сантехника: выбор дизайнера | РАСПАКОВКА | МЕТАМОРФОЗЫ на 60 м2 | #11">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">Розетки и сантехника: выбор дизайнера | МЕТАМОРФОЗЫ на 60 м2 | #11</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
     <!-- Page section end -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filters = document.querySelectorAll('.portfolio-filter .filter');
+
+            filters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    // Удаляем active у всех фильтров
+                    filters.forEach(f => f.classList.remove('active'));
+                    // Добавляем active к текущему фильтру
+                    this.classList.add('active');
+
+                    const filterType = this.getAttribute('data-filter');
+
+                    if (filterType === '.building') {
+                        // Показываем специальную верстку для Стройки
+                        document.querySelector('.default-view').style.display = 'none';
+                        document.querySelector('.building-special-view').style.display = 'block';
+                    } else {
+                        // Показываем стандартную верстку
+                        document.querySelector('.default-view').style.display = 'block';
+                        document.querySelector('.building-special-view').style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .building-special-view {
+            padding: 60px 0;
+
+        }
+
+        .building-description {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+    </style>
 
 {% endblock %}
