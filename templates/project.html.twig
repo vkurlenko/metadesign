@@ -5,7 +5,7 @@
 {% block content %}
 
     <!-- Page header section start -->
-    <section class="page-header-section set-bg section-about" data-setbg="/img/bg_MD_3.jpg">
+    <section class="page-header-section set-bg section-about" data-setbg="{{ PROJECT.dir }}/bg.jpg">
         <div class="container project-content">
             <h1 class="header-title" style="margin-bottom: 1.5rem">{{ PROJECT.name }}</h1>
             <div>
@@ -34,11 +34,13 @@
                 <div class="grid-sizer"></div>
 
                 {% for IMAGE in PROJECT.files %}
-                    <div class="grid-item">
-                        <a href="{{ IMAGE }}" title="">
-                            <img src="{{ IMAGE }}" alt="text" >
-                        </a>
-                    </div>
+                    {% if IMAGE != PROJECT.dir ~ "/bg.jpg" and IMAGE != PROJECT.dir ~ "/wrap.jpg" %}
+                        <div class="grid-item">
+                            <a href="{{ IMAGE }}" title="">
+                                <img src="{{ IMAGE }}" alt="text" >
+                            </a>
+                        </div>
+                    {% endif %}
                 {% endfor %}
 
             </div>
