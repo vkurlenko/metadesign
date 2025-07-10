@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Сервис{% endblock %}
+{% block title %} {{SERVICE.name}} {% endblock %}
 
 {% block content %}
 
@@ -17,7 +17,7 @@
 
 
     <!-- Page section start -->
-    <div class="page-section spad">
+    <div class="page-section spad" data-service-id="{{ ID }}">
         <div class="container">
 
             {% if ID == 'design_project' %}

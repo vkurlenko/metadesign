@@ -120,7 +120,7 @@ ol {
 --------------------------*/
 .sp-title {
 	font-size: 3.75rem;
-	margin-bottom: 2.5rem;
+	margin-bottom: 1rem;
 }
 
 .sp-title span {
@@ -136,6 +136,36 @@ ol {
 	text-transform: uppercase;
 	font-size: 2rem;
 }
+
+.rep-btn{
+	display: flex;
+	align-items: center;
+	height: 64px;
+	flex-shrink: 1;
+	flex-grow: 1;
+	cursor: pointer;
+}
+
+
+.pdf-link{
+	display: flex;
+	color: #333333;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 1.3rem;
+	padding: 4px 12px;
+}
+
+.pdf-link svg{
+	width: 1.8rem;
+	height: 1.8rem;
+}
+
+.pdf-link:hover {
+	color: #1b1c1c;
+	text-decoration: underline;
+}
+
 
 .pt100 {
 	padding-top: 100px;
@@ -158,7 +188,7 @@ ol {
 }
 
 .spad {
-	padding: 100px 0;
+	padding: 70px 0;
 }
 
 .section-title {
@@ -243,6 +273,7 @@ ol {
 	margin-right: 15px;
 	z-index: 1;
 	font-size: 3rem;
+	margin-top: 4rem;
 }
 
 .site-btn:after,
@@ -905,7 +936,7 @@ ol {
 	width: 50%;
 	height: 100%;
 	left: 0;
-	background-image: url("../img/cta-img.jpg");
+	background-image: url("../img/Ракурс на стол и зону тв.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -1981,18 +2012,18 @@ ol {
 	display: inline-block;
 }
 
-.service-page h3 {
-	cursor: pointer
+.service-page  > div:not(:first-child) h3 {
+	cursor: pointer;
 }
 
-.service-item-wrapper {
+#accordion > div:not(:first-child) .service-item-wrapper {
 	display: none;
 }
 
 .service-item-wrapper .service-item {
 	display: flex;
 	flex-flow: row nowrap;
-	background: #222;
+	background: #333;
 	padding: 1rem;
 }
 
@@ -2021,7 +2052,7 @@ ol {
 	display: flex;
 	align-items: center;
 	position: fixed;
-	bottom: 20vh;
+	bottom: 18vh;
 	background-color: var(--lime);
 	right: 0;
 	padding: 1rem;
@@ -2478,4 +2509,6 @@ ol {
 	.social-links a {
 		font-size: 2.5rem;
 	}
+
+
 }

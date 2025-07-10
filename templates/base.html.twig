@@ -48,6 +48,7 @@
                 if CURRENT_PAGE == 'portfolio'
                 or CURRENT_PAGE == 'project'
                 or CURRENT_PAGE == 'drawing'
+                or CURRENT_PAGE == 'building'
             %} class="active" {% endif %}>
                 <a href="/portfolio">Портфолио</a>
             </li>
@@ -70,8 +71,8 @@
     <a id="contact"></a>
     <div class="footer-social">
         <div class="social-links">
-            <a href="#"><i class="fa fa-youtube"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@MetaDesign_remont"><i class="fa fa-youtube"></i></a>
+            <a href="https://www.instagram.com/meta_design.diz?igsh=bmMxZmVteHIzeTBz"><i class="fa fa-instagram"></i></a>
             <a href="https://t.me/+{{ PHONE }}"><i class="fa fa-telegram"></i></a>
             <a href="https://api.whatsapp.com/send/?phone={{ PHONE }}"><i class="fa fa-whatsapp"></i></a>
         </div>
@@ -140,7 +141,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Какой-то заголовок</h5>
+                <h5 class="modal-title">Результаты расчета</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -176,5 +177,6 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/jquery.inputmask.bundle.js') }}"></script>
 <script src="{{ asset('js/calculator.js') }}"></script>
+<script src="{{ asset('js/feedback.js') }}"></script>
 </body>
 </html>

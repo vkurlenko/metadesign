@@ -35,10 +35,14 @@ class ProjectController extends AbstractController
             $project = new Project();
             $project->setIdentifier($projectData['identifier']);
             $project->setName($projectData['name']);
+            $project->setCity($projectData['city']);
+            $project->setText($projectData['text']);
             $project->setDescription($projectData['description']);
             $project->setFiles($projectData['files']);
             $project->setItems($projectData['items']);
             $project->setDir($projectData['dir']);
+            $project->setUrl($projectData['url']);
+            $project->setTitle($projectData['title']);
         }
 
         return $project;

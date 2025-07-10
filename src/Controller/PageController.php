@@ -56,7 +56,6 @@ class PageController extends AbstractController
     public function portfolio(): Response
     {
         $data = $this->getDataFromJson('portfolio.json');
-        shuffle($data['items']);
 
         $this->vars = array_merge(
             $this->vars,
@@ -82,7 +81,6 @@ class PageController extends AbstractController
             ['src' => '/img/about/IMG_6.jpg'],
             ['src' => '/img/about/IMG_7.jpg'],
             ['src' => '/img/about/IMG_8.jpg'],
-            ['src' => '/img/about/IMG_9.jpg'],
         ];
 
         $this->vars = array_merge(
@@ -106,8 +104,11 @@ class PageController extends AbstractController
         $data = [
             'identifier'  => $project->getIdentifier(),
             'name'        => $project->getName(),
+            'city'        => $project->getCity(),
+            'text'      => $project->getText(),
             'description' => $project->getDescription(),
-            'files'       => $project->getFiles()
+            'files'       => $project->getFiles(),
+            'dir'         => $project->getDir()
         ];
 
         $this->vars = array_merge(
@@ -135,7 +136,9 @@ class PageController extends AbstractController
             'identifier'  => $project->getIdentifier(),
             'name'        => $project->getName(),
             'description' => $project->getDescription(),
-            'files'       => $project->getFiles()
+            'files'       => $project->getFiles(),
+            'url'         => $project->getUrl(),
+            'title'       => $project->getTitle()
         ];
 
         $this->vars = array_merge(
@@ -171,6 +174,15 @@ class PageController extends AbstractController
         return $this->render('service.html.twig', $this->vars);
     }
 
+    #[Route('/building')]
+    public function building(string $identifier): Response
+    {
+        $this->vars = array_merge(
+            $this->vars,
+            ['CURRENT_PAGE' => 'building']
+        );
+        return $this->render('building.html.twig', $this->vars);
+    }
     /**
      * @param string $filename
      * @return array

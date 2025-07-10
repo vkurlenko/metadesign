@@ -12,12 +12,35 @@ class Project
 
     private ?string $description = null;
 
+    private ?string $url = null;
+
+    private ?string $title = null;
+
+    private ?string $city = null;
+    private ?string $text = null;
     private ?array $files = null;
 
     private ?array $items = null;
 
     private ?string $dir = null;
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
 
+    public function setText(?string $square): void
+    {
+        $this->text = $square;
+    }
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): void
+    {
+        $this->city = $city;
+    }
     public function getDir(): ?string
     {
         return $this->dir;
@@ -91,4 +114,25 @@ class Project
 
         return $this;
     }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): void
+    {
+        $this->url = $url;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
+
 }

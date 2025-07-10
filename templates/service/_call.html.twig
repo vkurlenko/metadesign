@@ -1,0 +1,74 @@
+<div class="container mt-4">
+    <div class="row justify-content-center shadow-sm pb-2" style="background-color: #333 !important;">
+        <div class="col-md-8 col-lg-auto">
+            <form id="form-call" class="text-light p-4 rounded-3">
+                <h1 class="mb-3 text-center text-light">Есть вопрос про {{ SERVICE.text }}?</h1>
+
+                <div class="mb-3">
+                    <label for="user_name" class="form-label" style="font-size: 1.5rem">Ваше имя</label>
+                    <input type="text"
+                           class="form-control"
+                           id="user_name"
+                           name="user_name"
+                           aria-label="Ваше имя"
+                           placeholder="Иван Иванов">
+                </div>
+
+                <div class="mb-4">
+                    <label for="phone" class="form-label" style="font-size: 1.5rem">Телефон</label>
+                    <div class="input-group">
+                        <span class="input-group-text">+7</span>
+                        <input type="tel"
+                               class="form-control"
+                               id="phoneFeed"
+                               name="phone"
+                               aria-label="Номер телефона"
+                               placeholder="(999) 999-99-99"
+                               required>
+                    </div>
+                </div>
+
+                <div class="border-top pt-3" >
+                    <label class="form-label" style="font-size: 1.5rem">Удобный способ связи:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="contact-call" name="contact_method[]" value="phone_call">
+                        <label class="form-check-label" for="contact-call">
+                            Звонок
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="contact-tg" name="contact_method[]" value="telegram">
+                        <label class="form-check-label" for="contact-tg">
+                            Telegram
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="contact-wa" name="contact_method[]" value="whatsapp">
+                        <label class="form-check-label" for="contact-wa">
+                            WhatsApp
+                        </label>
+                    </div>
+                </div>
+
+                <input type="hidden" name="service_type" value="{{ ID }}">
+
+                <div class="d-grid mt-4">
+                    <button type="submit" id="btnFeedSubmit" class="btn btn-primary py-2">Отправить</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center p-4">
+                <h5 class="mb-3">Спасибо! Ваша заявка отправлена.</h5>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,9 +4,13 @@
       "identifier": "design_project",
       "img": "/img/service/1.jpg",
       "route": "service",
+      "city": "",
+      "text": "дизайн-проект",
       "dir": "/img/service/design_project",
       "name": "Разработка дизайн проекта",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "Подписываем договор",
@@ -54,9 +58,13 @@
       "identifier": "repair",
       "img": "/img/service/2.jpg",
       "route": "service",
+      "city": "",
+      "text": "ремонт под ключ",
       "dir": "/img/service/repair",
       "name": "Ремонт ПОД КЛЮЧ",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "Подготовка дизайн-проекта",
@@ -104,9 +112,13 @@
       "identifier": "works",
       "img": "/img/service/3.jpg",
       "route": "service",
+      "city": "",
+      "text": "ремонтно-строительные работы",
       "dir": "/img/service/works",
       "name": "Ремонтно-строительные работы",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "",
@@ -119,9 +131,13 @@
       "identifier": "equipment",
       "img": "/img/service/4.jpg",
       "route": "service",
+      "city": "",
+      "text": "комплектацию",
       "dir": "/img/service/equipment",
       "name": "Комплектация",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "",
@@ -133,9 +149,13 @@
       "identifier": "supervision",
       "img": "/img/service/5.jpg",
       "route": "service",
+      "city": "",
+      "text": "авторский надзор",
       "dir": "/img/service/supervision",
       "name": "Авторский надзор",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "",
@@ -147,9 +167,13 @@
       "identifier": "consulting",
       "img": "/img/service/6.jpg",
       "route": "service",
+      "city": "",
+      "text": "консультацию",
       "dir": "/img/service/consulting",
       "name": "Консультация",
       "description": "",
+      "title": "",
+      "url": "",
       "items": [
         {
           "title": "",

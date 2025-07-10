@@ -4,13 +4,12 @@
 
 {% block content %}
 
-
     <!-- Page header section start -->
     <section class="page-header-section set-bg section-portfolio" data-setbg="img/bg_MD_3.jpg">
         <div>
-        <div class="container">
-            <h1 class="header-title">Портфолио</h1>
-        </div>
+            <div class="container">
+                <h1 class="header-title">Портфолио</h1>
+            </div>
         </div>
     </section>
     <!-- Page header section end -->
@@ -21,31 +20,122 @@
         <div class="container">
             <!-- portfolio filter menu -->
             <ul class="portfolio-filter">
-{#                <li class="filter" data-filter="*">Портфолио</li>#}
                 <li class="filter active" data-filter=".projects">Проекты</li>
                 <li class="filter" data-filter=".drawings">Чертежи</li>
                 <li class="filter" data-filter=".building">Стройка</li>
             </ul>
         </div>
-        <!-- portfolio items -->
-        <div class="portfolio-warp spad">
+
+        <div class="portfolio-warp spad default-view">
             <div id="portfolio">
                 <div class="grid-sizer"></div>
 
-                {% for ITEM in CARDS %}
-                    <div class="grid-item set-bg {{ ITEM.group }}" data-setbg="{{ ITEM.img }}">
-                        <a href="/{{ ITEM.route }}/{{ ITEM.id }}">
-                            <div class="project-content">
-                                <h2>{{ ITEM.title }}</h2>
-                                <p>{{ ITEM.text }}</p>
+                    {% for ITEM in CARDS%}
+                        {% if ITEM.group != 'building' %}
+                            <div class="grid-item set-bg {{ ITEM.group }}" data-setbg="{{ ITEM.img }}">
+                                <div class="project-content" onclick="window.location.href='/{{ ITEM.route }}/{{ ITEM.id }}'" style="cursor: pointer">
+                                    <h2>{{ ITEM.title }}</h2>
+                                    <p>{{ ITEM.text }}</p>
+                                </div>
+                                {% if ITEM.link %}
+                                    <a target="_blank" href="{{ ITEM.link.url }}" class="card-link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="3rem" height="3rem">
+                                            <path fill="#baff00" d="M64 464l48 0 0 48-48 0c-35.3 0-64-28.7-64-64L0 64C0 28.7 28.7 0 64 0L229.5 0c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3L384 304l-48 0 0-144-80 0c-17.7 0-32-14.3-32-32l0-80L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z"/>
+                                        </svg>
+                                    </a>
+                                {% endif %}
                             </div>
-                        </a>
-                    </div>
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
 
             </div>
         </div>
+
+        <div class="building-special-view">
+            <div class="container text-center py-4">
+                <div class="building-description mb-5">
+                    <p>Сериал о полном цикле ремонтно-строительных работ в нашей студии архитектурного дизайна MetaDesign! Присоединяйтесь и в режиме реального времени наблюдайте, как мы превращаем бетонную коробку в уютное гнездышко. Приятного просмотра!</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <a href="https://www.youtube.com/embed/wPD_wxn4qVM" target="_blank" class="text-decoration-none">
+                                <img src="img/building/7.jpg" class="card-img-top" alt="Подоконники из камня и гидрозоляция санузла | МЕТАМОРФОЗЫ на 60 м2 | #7">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">Подоконники из камня и гидрозоляция санузла | МЕТАМОРФОЗЫ на 60 м2 | #7</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <a href="https://www.youtube.com/embed/WH45Pn6Ip_0" target="_blank" class="text-decoration-none">
+                                <img src="img/building/1.jpg" class="card-img-top" alt="МЕТАМОРФОЗЫ на 60 м2 | Сериал о ремонте под ключ | #1">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">МЕТАМОРФОЗЫ на 60 м2 | Сериал о ремонте под ключ | #1</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <a href="https://www.youtube.com/embed/XJfv7OOjcCI" target="_blank" class="text-decoration-none">
+                                <img src="img/building/11.jpg" class="card-img-top" alt="Розетки и сантехника: выбор дизайнера | РАСПАКОВКА | МЕТАМОРФОЗЫ на 60 м2 | #11">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">Розетки и сантехника: выбор дизайнера | МЕТАМОРФОЗЫ на 60 м2 | #11</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
     <!-- Page section end -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filters = document.querySelectorAll('.portfolio-filter .filter');
+
+            filters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    // Удаляем active у всех фильтров
+                    filters.forEach(f => f.classList.remove('active'));
+                    // Добавляем active к текущему фильтру
+                    this.classList.add('active');
+
+                    const filterType = this.getAttribute('data-filter');
+
+                    if (filterType === '.building') {
+                        // Показываем специальную верстку для Стройки
+                        document.querySelector('.default-view').style.display = 'none';
+                        document.querySelector('.building-special-view').style.display = 'block';
+                    } else {
+                        // Показываем стандартную верстку
+                        document.querySelector('.default-view').style.display = 'block';
+                        document.querySelector('.building-special-view').style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .building-special-view {
+            padding: 60px 0;
+
+        }
+
+        .building-description {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+    </style>
 
 {% endblock %}

@@ -25,7 +25,6 @@ final class Version20250313064650 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP INDEX UNIQ_1483A5E96B01BC5B ON users');
+
     }
 }

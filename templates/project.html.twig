@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Проект{% endblock %}
+{% block title %}{{ PROJECT.name }}{% endblock %}
 
 {% block content %}
 
     <!-- Page header section start -->
-    <section class="page-header-section set-bg section-about" data-setbg="/img/bg_MD_3.jpg">
-        <div style="">
-            <div class="container">
-                <h1 class="header-title">{{ PROJECT.name }}</h1>
+    <section class="page-header-section set-bg section-about" data-setbg="{{ PROJECT.dir }}/bg.jpg">
+        <div class="container project-content">
+            <h1 class="header-title" style="margin-bottom: 1.5rem">{{ PROJECT.name }}</h1>
+            <div>
+                <p style="color: #baff00; margin-bottom: 0">{{ PROJECT.text }}</p>
+                <h2 style="color: #FFFFFF; font-size: 30px">{{ PROJECT.city }}</h2>
             </div>
         </div>
     </section>
@@ -20,9 +22,9 @@
         <div class="container">
 
             <div class="py-3">
-                <a href="/portfolio" class="site-btn sb-dark">Проекты</a>
+                <a href="/portfolio" class="site-btn sb-dark mt-3">Проекты</a>
             </div>
-            <p class="pt-5">
+            <p class="pt-2">
                 {{ PROJECT.description }}
             </p>
         </div>
@@ -32,11 +34,13 @@
                 <div class="grid-sizer"></div>
 
                 {% for IMAGE in PROJECT.files %}
-                    <div class="grid-item">
-                        <a href="{{ IMAGE }}" title="test">
-                            <img src="{{ IMAGE }}" alt="text" >
-                        </a>
-                    </div>
+                    {% if IMAGE != PROJECT.dir ~ "/bg.jpg" and IMAGE != PROJECT.dir ~ "/wrap.jpg" %}
+                        <div class="grid-item">
+                            <a href="{{ IMAGE }}" title="">
+                                <img src="{{ IMAGE }}" alt="text" >
+                            </a>
+                        </div>
+                    {% endif %}
                 {% endfor %}
 
             </div>

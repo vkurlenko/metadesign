@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Стройка{% endblock %}
+
+{% block content %}
+
+
+    <!-- Page header section start -->
+    <section class="page-header-section set-bg section-about" data-setbg="/img/bg_MD_2.jpg">
+        <div style="">
+            <div class="container">
+                <h1 class="header-title">Стройка</h1>
+            </div>
+        </div>
+    </section>
+    <!-- Page header section end -->
+
+
+    <!-- Page section start -->
+
+    <div class="page-section">
+        <div class="container">
+
+            <div class="row g-4 my-4"> <!-- g-4 добавляет промежутки между колонками -->
+                <!-- Колонка для первого видео -->
+                <p class="pb-4">
+                    <span>
+                        Сериал о полном цикле ремонтно-строительных работ в нашей студии архитектурного дизайна MetaDesign! Присоединяйтесь и в режиме реального времени наблюдайте, как мы превращаем бетонную коробку в уютное гнездышко. Приятного просмотра!
+                    </span>
+                </p>
+                <div class="col-md-4">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/WH45Pn6Ip_0"
+                                class="building-video"
+                                title="МЕТАМОРФОЗЫ на 60 м2 | Сериал о ремонте под ключ | #1"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Колонка для второго видео -->
+                <div class="col-md-4">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/XJfv7OOjcCI"
+                                class="building-video"
+                                title="Розетки и сантехника: выбор дизайнера | РАСПАКОВКА | МЕТАМОРФОЗЫ на 60 м2 | #11"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Колонка для третьего видео -->
+                <div class="col-md-4">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/wPD_wxn4qVM"
+                                class="building-video"
+                                title="Подоконники из камня и гидрозоляция санузла | МЕТАМОРФОЗЫ на 60 м2 | #7"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page section end -->
+
+    <style>
+        .building-video{
+            border-width: 0;
+
+        }
+        .grid-sizer,
+        .grid-item {
+            width: 30%;
+            padding: .5rem
+        }
+
+        @media only screen and (max-width: 479px) {
+            .grid-sizer,
+            .grid-item {
+                width: 50%;
+                padding: .2rem
+            }
+        }
+
+        .image-source-link {
+            color: #98C3D1;
+        }
+
+        .mfp-with-zoom .mfp-container,
+        .mfp-with-zoom.mfp-bg {
+            opacity: 0;
+            -webkit-backface-visibility: hidden;
+            /* ideally, transition speed should match zoom duration */
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+        .mfp-with-zoom.mfp-ready .mfp-container {
+            opacity: 1;
+        }
+        .mfp-with-zoom.mfp-ready.mfp-bg {
+            opacity: 0.8;
+        }
+
+        .mfp-with-zoom.mfp-removing .mfp-container,
+        .mfp-with-zoom.mfp-removing.mfp-bg {
+            opacity: 0;
+        }
+    </style>
+
+{% endblock %}
