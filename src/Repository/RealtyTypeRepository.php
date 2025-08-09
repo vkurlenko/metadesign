@@ -15,12 +15,14 @@ class RealtyTypeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, RealtyType::class);
     }
+
     public function findOneByName($value): ?RealtyType
     {
-            return $this->createQueryBuilder('p')
-                ->andWhere('p.name = :val')
-                ->setParameter('val', $value)
-                ->getQuery()
-                ->getOneOrNullResult();
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.name = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
+
 }
