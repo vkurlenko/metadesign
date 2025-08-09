@@ -69,51 +69,6 @@ class Order
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $done_at = null;
 
-    public function __construct($data, EntityManagerInterface $entityManager)
-    {
-        /* TODO В Entity никакой логики быть не должно, все вычисления вынести в контроллер или сервис */
-
-//        $roomType = $entityManager->getRepository(RoomType::class)->findOneBy(['name' => $data['room-type']])
-//            ? $entityManager->getRepository(RoomType::class)->findOneBy(['name' => $data['room-type']])
-//            : new RoomType();
-//
-//        if (!$roomType->getName()){
-//            $roomType->setName($data['room-type']);
-//        }
-//
-        $repairType = $entityManager->getRepository(RepairType::class)->findOneBy(['name' => $data['repair-type']])
-            ? $entityManager->getRepository(RepairType::class)->findOneBy(['name' => $data['repair-type']])
-            : new RepairType();
-
-        if (!$repairType->getName()) {
-            $repairType->setName($data['repair-type']);
-        }
-
-        $realtyType = $entityManager->getRepository(RealtyType::class)->findOneBy(['name' => $data['realty-type']])
-            ? $entityManager->getRepository(RealtyType::class)->findOneBy(['name' => $data['realty-type']])
-            : new RealtyType();
-
-        if (!$realtyType->getName()) {
-            $realtyType->setName($data['realty-type']);
-        }
-
-        $user = $entityManager->getRepository(User::class)->findOneBy(['phone_number' => preg_replace('/[^0-9]/', '', $data['phone'])])
-            ? $entityManager->getRepository(User::class)->findOneBy(['phone_number' => preg_replace('/[^0-9]/', '', $data['phone'])])
-            : new User();
-
-        if (!$user->getPhoneNumber()) {
-            $user->setPhoneNumber(preg_replace('/[^0-9]/', '', $data['phone']));
-        }
-
-        $squareArea = $data['area-square'];
-
-//        $this->setRoomType($roomType);
-        $this->setRepairClass($repairType);
-        $this->setPropertyType($realtyType);
-        $this->setUserId($user);
-        $this->setSquare($squareArea);
-        $this->setCreatedAt(new \DateTime('now'));
-    }
 
     public function getId(): ?int
     {
