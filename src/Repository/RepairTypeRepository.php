@@ -15,6 +15,14 @@ class RepairTypeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, RepairType::class);
     }
+    public function findOneByName($value): ?RepairType
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.name = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
     //    /**
     //     * @return RepairType[] Returns an array of RepairType objects

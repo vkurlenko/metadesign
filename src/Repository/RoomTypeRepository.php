@@ -16,6 +16,15 @@ class RoomTypeRepository extends ServiceEntityRepository
         parent::__construct($registry, RoomType::class);
     }
 
+    public function findOneByName($value): ?RoomType
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.name = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     //    /**
     //     * @return RoomType[] Returns an array of RoomType objects
     //     */
