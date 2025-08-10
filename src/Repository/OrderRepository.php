@@ -16,4 +16,9 @@ class OrderRepository extends ServiceEntityRepository
         parent::__construct($registry, Order::class);
     }
 
+    public function save(Order $order): void
+    {
+        $this->getEntityManager()->persist($order);
+        $this->getEntityManager()->flush();
+    }
 }
