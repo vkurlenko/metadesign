@@ -45,7 +45,7 @@ class Order
         cascade: ['persist'],
         inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?RepairType $repair_class = null;
+    private ?RepairType $repairType = null;
 
     #[ORM\Column(type: Types::BIGINT)]
     private ?string $cost = null;
