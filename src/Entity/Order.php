@@ -35,11 +35,11 @@ class Order
     #[Assert\LessThanOrEqual(3000)]
     private ?float $square = null;
 
-    #[ORM\ManyToOne(targetEntity: RoomType::class,
+    #[ORM\ManyToOne(targetEntity: RealtyStatusType::class,
         cascade: ['persist'],
         inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?RoomType $room_type = null;
+    private ?RealtyStatusType $room_type = null;
 
     #[ORM\ManyToOne(targetEntity: RepairType::class,
         cascade: ['persist'],
@@ -105,12 +105,12 @@ class Order
         return $this;
     }
 
-    public function getRoomType(): ?RoomType
+    public function getRoomType(): ?RealtyStatusType
     {
         return $this->room_type;
     }
 
-    public function setRoomType(?RoomType $room_type): static
+    public function setRoomType(?RealtyStatusType $room_type): static
     {
         $this->room_type = $room_type;
 
