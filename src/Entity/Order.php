@@ -81,14 +81,14 @@ class Order
         return $this;
     }
 
-    public function getPropertyType(): ?RealtyType
+    public function getRealtyType(): ?RealtyType
     {
-        return $this->property_type;
+        return $this->realty_type;
     }
 
-    public function setPropertyType(?RealtyType $property_type): static
+    public function setRealtyType(?RealtyType $realty_type): static
     {
-        $this->property_type = $property_type;
+        $this->realty_type = $realty_type;
 
         return $this;
     }
@@ -117,14 +117,14 @@ class Order
         return $this;
     }
 
-    public function getRepairClass(): ?RepairType
+    public function getRepairType(): ?RepairType
     {
-        return $this->repair_class;
+        return $this->repairType;
     }
 
-    public function setRepairClass(?RepairType $repair_class): static
+    public function setRepairType(?RepairType $repairType): static
     {
-        $this->repair_class = $repair_class;
+        $this->repairType = $repairType;
 
         return $this;
     }
