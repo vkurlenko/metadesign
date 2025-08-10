@@ -10,18 +10,18 @@ class CalculatorService
     const REPAIR_TYPE_COMFORT = 'comfort';
     const REPAIR_TYPE_BUSINESS = 'business';
     const REPAIR_TYPE_PREMIUM = 'premium';
-    const ROOM_TYPE_SECONDARY = 'secondary';
+    const REALTY_STATUS_TYPE_SECONDARY = 'secondary';
 
 
     public function calculateCost(CalculateRequest $data): float
     {
         $areaSquare = $data->areaSquare;
         $realtyType = $data->realtyType;
-        $roomType = $data->roomType;
+        $realtyStatusType = $data->realtyStatusType;
         $repairType = $data->repairType;
 
         if ($realtyType == self::REALTY_TYPE_FLAT) {
-            if ($roomType == self::ROOM_TYPE_SECONDARY) {
+            if ($realtyStatusType == self::REALTY_STATUS_TYPE_SECONDARY) {
                 $result = 150 * 1000;
             }
             if ($areaSquare < 25) {
