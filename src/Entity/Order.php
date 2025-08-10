@@ -4,26 +4,13 @@ namespace App\Entity;
 
 use App\Repository\OrderRepository;
 use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\NoReturn;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[ORM\Table(name: 'orders')]
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 class Order
 {
-    const REALTY_TYPE_FLAT = 'flat';
-    const REALTY_TYPE_HOUSE = 'house';
-    const REALTY_TYPE_COMMERCE = 'commerce';
-    const REPAIR_TYPE_COMFORT = 'comfort';
-    const REPAIR_TYPE_BUSINESS = 'business';
-    const REPAIR_TYPE_PREMIUM = 'premium';
-    const ROOM_TYPE_SECONDARY = 'secondary';
-    const ROOM_TYPE_NEW = 'new';
-
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(nullable: false)] // TODO если !nullable, то private int $id, а не ?int $id;
@@ -32,7 +19,7 @@ class Order
     #[ORM\ManyToOne(targetEntity: User::class,
         cascade: ['persist'],
         inversedBy: 'orders')]
-    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id',nullable: false)]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: false)]
     private ?User $user_id = null;
 
     #[ORM\ManyToOne(targetEntity: RealtyType::class,
@@ -176,58 +163,5 @@ class Order
         $this->done_at = $done_at;
 
         return $this;
-    }
-
-    public function validate(ValidatorInterface $validator): array
-    {
-        $errors = [];
-        array_push($errors,
-            $validator->validate($this->getRoomType()),
-            $validator->validate($this->getRepairClass()),
-            $validator->validate($this->getPropertyType()),
-            $validator->validate($this->getUserId()),
-            $validator->validate($this));
-        return $errors;
-    }
-
-    /* TODO в контроллер или сервис */
-    #[NoReturn]
-    public function calculateCost(): void
-    {
-        $squareArea = $this->getSquare();
-        $realtyType = $this->getPropertyType()->getName();
-        $roomType = $this->getRoomType()->getName();
-
-        if ($realtyType == self::REALTY_TYPE_FLAT) {
-            if ($roomType == self::ROOM_TYPE_SECONDARY) {
-                $this->setCost(150 * 1000);
-            }
-            if ($squareArea < 25) {
-                $this->calculateCostByRepairType(120, 170);
-            }elseif ($squareArea < 30) {
-                $this->calculateCostByRepairType(110, 160);
-            }elseif ($squareArea < 35) {
-                $this->calculateCostByRepairType(100, 150);
-            }elseif ($squareArea < 70) {
-                $this->calculateCostByRepairType(95, 130);
-            }elseif ($squareArea < 100) {
-                $this->calculateCostByRepairType(90, 120);
-            }else {
-                $this->calculateCostByRepairType(85, 115);
-            }
-        }else{
-            $this->calculateCostByRepairType(4, 6);
-        }
-    }
-
-    /* TODO Вынести в контроллер или сервис */
-    private function calculateCostByRepairType(int $multiplierComfort, int $multiplierBusiness) : void
-    {
-        if ($this->repair_class->getName() == self::REPAIR_TYPE_COMFORT) {
-            $this->setCost($multiplierComfort * 1000 * $this->getSquare());
-        } elseif ($this->repair_class->getName() == self::REPAIR_TYPE_BUSINESS) {
-            $this->setCost($multiplierBusiness * 1000 * $this->getSquare());
-        }
-
     }
 }
