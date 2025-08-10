@@ -5,10 +5,6 @@ $(document).ready(function () {
     ;
 
 
-    btnSubmit.on('click', function () {
-        form.submit();
-    })
-
     applyInputMask (inputPhone);
 
     form.on('submit', function (event) {
@@ -38,7 +34,6 @@ $(document).ready(function () {
         element.inputmask("(999) 999-99-99");
     }
     function sendForm () {
-
         let formData = new FormData(form[0]);
 
         $.ajax({
