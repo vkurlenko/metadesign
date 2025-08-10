@@ -26,7 +26,7 @@ class Order
         cascade: ['persist'],
         inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?RealtyType $property_type = null;
+    private ?RealtyType $realty_type = null;
 
     #[ORM\Column]
     #[Assert\Type('float')]
