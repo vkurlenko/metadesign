@@ -7,7 +7,7 @@ use App\Entity\Order;
 use App\Repository\OrderRepository;
 use App\Repository\RealtyTypeRepository;
 use App\Repository\RepairTypeRepository;
-use App\Repository\RoomTypeRepository;
+use App\Repository\RealtyStatusTypeRepository;
 
 class OrderService
 {
@@ -18,7 +18,7 @@ class OrderService
 
         private RealtyTypeRepository $realtyTypeRepository,
         private RepairTypeRepository $repairTypeRepository,
-        private RoomTypeRepository $roomTypeRepository,
+        private RealtyStatusTypeRepository $roomTypeRepository,
         private OrderRepository $orderRepository,
     ) {
     }
