@@ -39,7 +39,7 @@ class Order
         cascade: ['persist'],
         inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?RealtyStatusType $room_type = null;
+    private ?RealtyStatusType $realty_status_type = null;
 
     #[ORM\ManyToOne(targetEntity: RepairType::class,
         cascade: ['persist'],
@@ -105,14 +105,14 @@ class Order
         return $this;
     }
 
-    public function getRoomType(): ?RealtyStatusType
+    public function getRealtyStatusType(): ?RealtyStatusType
     {
-        return $this->room_type;
+        return $this->realty_status_type;
     }
 
-    public function setRoomType(?RealtyStatusType $room_type): static
+    public function setRealtyStatusType(?RealtyStatusType $realty_status_type): static
     {
-        $this->room_type = $room_type;
+        $this->realty_status_type = $realty_status_type;
 
         return $this;
     }
