@@ -36,7 +36,7 @@ class ResponseMessageService
     {
     }
 
-    public function getCalculatorResponse(Order $order)
+    public function getCalculatorResponse(?Order $order)
     {
         if ($order) {
             $message = $order->getPropertyType()->getName() == self::REALTY_TYPE_FLAT
