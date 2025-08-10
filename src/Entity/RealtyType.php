@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /// Тип объекта
 ///
 
-#[ORM\Table(name: 'property_types')]
+#[ORM\Table(name: 'realty_types')]
 #[ORM\Entity(repositoryClass: RealtyTypeRepository::class)]
 class RealtyType
 {
