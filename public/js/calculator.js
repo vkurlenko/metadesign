@@ -110,6 +110,7 @@ $(document).ready(function () {
             },
             error: function (jqXHR, exception) {
                 let message = '';
+                responseLoader.hide();
 
                 if (jqXHR.status === 0) {
                     message = ('Not connect. Verify Network.');
@@ -117,6 +118,8 @@ $(document).ready(function () {
                     message = ('Requested page not found (404).');
                 } else if (jqXHR.status === 500) {
                     message = ('Internal Server Error (500).');
+                } else if (jqXHR.status === 422){
+                    message = ('Validation failed.');
                 } else if (exception === 'parsererror') {
                     message = ('Requested JSON parse failed.');
                 } else if (exception === 'timeout') {
