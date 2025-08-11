@@ -17,6 +17,9 @@ class UserService
         $user = $this->userRepository->findOneByPhoneNumber($phone);
 
         if ($user) {
+            if ($user->getFirstName() === null) {
+                $this->userRepository->updateFirstName($user, $name);
+            }
             return $user;
         }
 

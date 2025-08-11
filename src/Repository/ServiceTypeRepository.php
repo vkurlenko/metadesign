@@ -16,4 +16,12 @@ class ServiceTypeRepository extends ServiceEntityRepository
         parent::__construct($registry, ServiceType::class);
     }
 
+    public function findOneByName($value): ?ServiceType
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.name = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
