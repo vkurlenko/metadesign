@@ -4,7 +4,7 @@ namespace App\Service;
 
 class TranslatorService
 {
-    const array RU_EN_DICTIONARY = [
+    const RU_EN_DICTIONARY = [
         "Коммерческое помещение" => "commerce",
         "Квартира" => "flat",
         "Дом" => "house",
@@ -16,7 +16,7 @@ class TranslatorService
         "Комфорт" => "comfort",
         "Премиум" => "premium"
     ];
-    const array EN_RU_DICTIONARY = [
+    const EN_RU_DICTIONARY = [
         "commerce" => "Коммерческое помещение",
         "flat" => "Квартира",
         "house" => "Дом",

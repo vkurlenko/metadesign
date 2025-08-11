@@ -13,8 +13,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class CalculateController extends AbstractController
 {
 
-    const int HTTP_CODE_SUCCESS = 200;
-    const int HTTP_CODE_FAIL = 500;
+    const HTTP_CODE_SUCCESS = 200;
+    const HTTP_CODE_FAIL = 500;
 
 
     public function __construct(
