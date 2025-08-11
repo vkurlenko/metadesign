@@ -8,7 +8,7 @@ class ResponseMessageService
 {
     const REALTY_TYPE_FLAT = 'flat';
     const MESSAGE_SUCCESS_FLAT = '
-                    Тип недвижимости: realty
+                    Тип недвижимости: realtyType
                     Площадь помещения: square
                     Тип помещения: realtyStatusType
                     Класс ремонта: repairType
@@ -19,7 +19,7 @@ class ResponseMessageService
                     Мы с Вами свяжемся в течение 15 минут.';
 
     const MESSAGE_SUCCESS_COMMERCE = '
-                    Тип недвижимости: realty
+                    Тип недвижимости: realtyType
                     Площадь помещения: square
                     Тип помещения: realtyStatusType
                     Класс ремонта: repairType

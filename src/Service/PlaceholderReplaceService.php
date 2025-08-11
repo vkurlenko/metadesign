@@ -14,7 +14,7 @@ class PlaceholderReplaceService
 
     public function calculatorMessagePlaceholderReplace(Order $order, string $message)
     {
-        $search = ["realty", "square", "realtyStatusType", "repairType", "phone", "cost"];
+        $search = ["realtyType", "square", "realtyStatusType", "repairType", "phone", "cost"];
         $replace = [
             $this->translatorService->translate($order->getRealtyType()->getName()),
             number_format($order->getSquare(), 2, '.', ' '),
