@@ -7,12 +7,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class FeedbackRequest
 {
-    const string SERVICE_TYPE_DESIGN_PROJECT = 'design_project';
-    const string SERVICE_TYPE_REPAIR = 'repair';
-    const string SERVICE_TYPE_WORKS = 'works';
-    const string SERVICE_TYPE_EQUIPMENT = 'equipment';
-    const string SERVICE_TYPE_SUPERVISION = 'supervision';
-    const string SERVICE_TYPE_CONSULTING = 'consulting';
+    const SERVICE_TYPE_DESIGN_PROJECT = 'design_project';
+    const SERVICE_TYPE_REPAIR = 'repair';
+    const SERVICE_TYPE_WORKS = 'works';
+    const SERVICE_TYPE_EQUIPMENT = 'equipment';
+    const SERVICE_TYPE_SUPERVISION = 'supervision';
+    const SERVICE_TYPE_CONSULTING = 'consulting';
     #[SerializedName('user_name')]
     #[Assert\NotBlank]
     #[Assert\Type('string')]

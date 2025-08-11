@@ -7,16 +7,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class CalculateRequest
 {
-    const string REALTY_STATUS_TYPE_NEW = "new";
-    const string REALTY_STATUS_TYPE_SECONDARY = "secondary";
+    const REALTY_STATUS_TYPE_NEW = "new";
+    const REALTY_STATUS_TYPE_SECONDARY = "secondary";
 
-    const string REALTY_TYPE_FLAT = "flat";
-    const string REALTY_TYPE_COMMERCE = "commerce";
-    const string REALTY_TYPE_HOUSE = "house";
+    const REALTY_TYPE_FLAT = "flat";
+    const REALTY_TYPE_COMMERCE = "commerce";
+    const REALTY_TYPE_HOUSE = "house";
 
-    const string REPAIR_TYPE_COMFORT = "comfort";
-    const string REPAIR_TYPE_BUSINESS = "business";
-    const string REPAIR_TYPE_PREMIUM = "premium";
+    const REPAIR_TYPE_COMFORT = "comfort";
+    const REPAIR_TYPE_BUSINESS = "business";
+    const REPAIR_TYPE_PREMIUM = "premium";
     #[SerializedName('room-type')]
     #[Assert\NotBlank(
         message: "Поле не может быть пустым."
