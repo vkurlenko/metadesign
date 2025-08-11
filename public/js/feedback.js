@@ -28,6 +28,14 @@ $(document).ready(function () {
             inputPhone.removeClass('is-invalid');
         }
 
+        const checkedBoxes = $('input[name="contact_method[]"]:checked');
+        if (checkedBoxes.length === 0) {
+            $('#contact-call, #contact-tg, #contact-wa').addClass('is-invalid');
+            isValid = false;
+        } else {
+            $('#contact-call, #contact-tg, #contact-wa').removeClass('is-invalid');
+        }
+
         return isValid;
     }
     function applyInputMask (element) {
