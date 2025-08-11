@@ -19,7 +19,7 @@ class Feedback
     #[ORM\ManyToOne(targetEntity: User::class,
         cascade: ['persist'],
         inversedBy: 'feedback')]
-    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id',nullable: false)]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: false)]
     private ?User $user_id = null;
 
     #[ORM\ManyToOne(targetEntity: ServiceType::class,
@@ -42,28 +42,6 @@ class Feedback
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $done_at = null;
-
-    public function __construct($data, EntityManagerInterface $entityManager)
-    {
-        $user = $entityManager->getRepository(User::class)->findOneBy(['phone_number' => preg_replace('/[^0-9]/', '', $data['phone'])])
-            ? $entityManager->getRepository(User::class)->findOneBy(['phone_number' => preg_replace('/[^0-9]/', '', $data['phone'])])
-            : new User();
-        if (!$user->getPhoneNumber()) {
-            $user->setPhoneNumber(preg_replace('/[^0-9]/', '', $data['phone']));
-        }
-        if (!$user->getFirstName()) {
-            $user->setFirstName($data['user_name']);
-        }
-
-        $serviceType = $entityManager->getRepository(ServiceType::class)->findOneBy(['name' => $data['service_type']]);
-
-        $this->setUserId($user);
-        $this->setServiceType($serviceType);
-        $this->setPhoneCall($data['phone_call']);
-        $this->setTelegram($data['telegram']);
-        $this->setWhatsapp($data['whatsapp']);
-        $this->setCreatedAt(new \DateTime('now'));
-    }
 
     public function getId(): ?int
     {
