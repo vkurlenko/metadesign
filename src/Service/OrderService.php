@@ -7,7 +7,7 @@ use App\Entity\Order;
 use App\Repository\OrderRepository;
 use App\Repository\RealtyTypeRepository;
 use App\Repository\RepairTypeRepository;
-use App\Repository\RoomTypeRepository;
+use App\Repository\RealtyStatusTypeRepository;
 
 class OrderService
 {
@@ -18,7 +18,7 @@ class OrderService
 
         private RealtyTypeRepository $realtyTypeRepository,
         private RepairTypeRepository $repairTypeRepository,
-        private RoomTypeRepository $roomTypeRepository,
+        private RealtyStatusTypeRepository $realtyStatusTypeRepository,
         private OrderRepository $orderRepository,
     ) {
     }
@@ -31,14 +31,14 @@ class OrderService
 
             $realtyType = $this->realtyTypeRepository->findOneByName($data->realtyType);
             $repairType = $this->repairTypeRepository->findOneByName($data->repairType);
-            $roomType = $this->roomTypeRepository->findOneByName($data->roomType);
+            $realtyStatusType = $this->realtyStatusTypeRepository->findOneByName($data->realtyStatusType);
             $squareArea = $data->areaSquare;
             $user = $this->userService->findOrCreateByPhone($phone);
 
             $order = new Order();
-            $order->setPropertyType($realtyType);
-            $order->setRepairClass($repairType);
-            $order->setRoomType($roomType);
+            $order->setRealtyType($realtyType);
+            $order->setRepairType($repairType);
+            $order->setRealtyStatusType($realtyStatusType);
             $order->setSquare($squareArea);
             $order->setUserId($user);
             $order->setCreatedAt(new \DateTime('now'));

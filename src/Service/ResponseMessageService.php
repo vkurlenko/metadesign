@@ -8,9 +8,9 @@ class ResponseMessageService
 {
     const REALTY_TYPE_FLAT = 'flat';
     const MESSAGE_SUCCESS_FLAT = '
-                    Тип недвижимости: realty
+                    Тип недвижимости: realtyType
                     Площадь помещения: square
-                    Тип помещения: roomType
+                    Тип помещения: realtyStatusType
                     Класс ремонта: repairType
                     Номер телефона для связи: phone
                     Стоимость ремонта:  cost  руб.
@@ -19,9 +19,9 @@ class ResponseMessageService
                     Мы с Вами свяжемся в течение 15 минут.';
 
     const MESSAGE_SUCCESS_COMMERCE = '
-                    Тип недвижимости: realty
+                    Тип недвижимости: realtyType
                     Площадь помещения: square
-                    Тип помещения: roomType
+                    Тип помещения: realtyStatusType
                     Класс ремонта: repairType
                     Номер телефона для связи: phone 
                     Стоимость дизайн-проекта: от cost руб.
@@ -39,7 +39,7 @@ class ResponseMessageService
     public function getCalculatorResponse(?Order $order)
     {
         if ($order) {
-            $message = $order->getPropertyType()->getName() == self::REALTY_TYPE_FLAT
+            $message = $order->getRealtyType()->getName() == self::REALTY_TYPE_FLAT
                 ? self::MESSAGE_SUCCESS_FLAT
                 : self::MESSAGE_SUCCESS_COMMERCE;
             $message = $this->placeholderReplaceService->calculatorMessagePlaceholderReplace($order, $message);

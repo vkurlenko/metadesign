@@ -16,4 +16,9 @@ class FeedbackRepository extends ServiceEntityRepository
         parent::__construct($registry, Feedback::class);
     }
 
+    public function save(Feedback $feedback): void
+    {
+        $this->getEntityManager()->persist($feedback);
+        $this->getEntityManager()->flush();
+    }
 }

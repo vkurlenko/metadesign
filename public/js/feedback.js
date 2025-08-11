@@ -5,10 +5,6 @@ $(document).ready(function () {
     ;
 
 
-    btnSubmit.on('click', function () {
-        form.submit();
-    })
-
     applyInputMask (inputPhone);
 
     form.on('submit', function (event) {
@@ -32,13 +28,20 @@ $(document).ready(function () {
             inputPhone.removeClass('is-invalid');
         }
 
+        const checkedBoxes = $('input[name="contact_method[]"]:checked');
+        if (checkedBoxes.length === 0) {
+            $('#contact-call, #contact-tg, #contact-wa').addClass('is-invalid');
+            isValid = false;
+        } else {
+            $('#contact-call, #contact-tg, #contact-wa').removeClass('is-invalid');
+        }
+
         return isValid;
     }
     function applyInputMask (element) {
         element.inputmask("(999) 999-99-99");
     }
     function sendForm () {
-
         let formData = new FormData(form[0]);
 
         $.ajax({

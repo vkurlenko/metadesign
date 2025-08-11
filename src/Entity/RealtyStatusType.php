@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\RoomTypeRepository;
+use App\Repository\RealtyStatusTypeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -12,9 +12,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /// Новостройка или вторичка
 ///
 ///
-#[ORM\Table(name: 'room_types')]
-#[ORM\Entity(repositoryClass: RoomTypeRepository::class)]
-class RoomType
+#[ORM\Table(name: 'realty_status_types')]
+#[ORM\Entity(repositoryClass: RealtyStatusTypeRepository::class)]
+class RealtyStatusType
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

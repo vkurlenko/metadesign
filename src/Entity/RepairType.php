@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 ///
 ///
 ///
-#[ORM\Table(name: 'repair_classes')]
+#[ORM\Table(name: 'repair_types')]
 #[ORM\Entity(repositoryClass: RepairTypeRepository::class)]
 class RepairType
 {

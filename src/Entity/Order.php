@@ -26,7 +26,7 @@ class Order
         cascade: ['persist'],
         inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?RealtyType $property_type = null;
+    private ?RealtyType $realty_type = null;
 
     #[ORM\Column]
     #[Assert\Type('float')]
@@ -35,17 +35,17 @@ class Order
     #[Assert\LessThanOrEqual(3000)]
     private ?float $square = null;
 
-    #[ORM\ManyToOne(targetEntity: RoomType::class,
+    #[ORM\ManyToOne(targetEntity: RealtyStatusType::class,
         cascade: ['persist'],
         inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?RoomType $room_type = null;
+    private ?RealtyStatusType $realty_status_type = null;
 
     #[ORM\ManyToOne(targetEntity: RepairType::class,
         cascade: ['persist'],
         inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?RepairType $repair_class = null;
+    private ?RepairType $repairType = null;
 
     #[ORM\Column(type: Types::BIGINT)]
     private ?string $cost = null;
@@ -81,14 +81,14 @@ class Order
         return $this;
     }
 
-    public function getPropertyType(): ?RealtyType
+    public function getRealtyType(): ?RealtyType
     {
-        return $this->property_type;
+        return $this->realty_type;
     }
 
-    public function setPropertyType(?RealtyType $property_type): static
+    public function setRealtyType(?RealtyType $realty_type): static
     {
-        $this->property_type = $property_type;
+        $this->realty_type = $realty_type;
 
         return $this;
     }
@@ -105,26 +105,26 @@ class Order
         return $this;
     }
 
-    public function getRoomType(): ?RoomType
+    public function getRealtyStatusType(): ?RealtyStatusType
     {
-        return $this->room_type;
+        return $this->realty_status_type;
     }
 
-    public function setRoomType(?RoomType $room_type): static
+    public function setRealtyStatusType(?RealtyStatusType $realty_status_type): static
     {
-        $this->room_type = $room_type;
+        $this->realty_status_type = $realty_status_type;
 
         return $this;
     }
 
-    public function getRepairClass(): ?RepairType
+    public function getRepairType(): ?RepairType
     {
-        return $this->repair_class;
+        return $this->repairType;
     }
 
-    public function setRepairClass(?RepairType $repair_class): static
+    public function setRepairType(?RepairType $repairType): static
     {
-        $this->repair_class = $repair_class;
+        $this->repairType = $repairType;
 
         return $this;
     }

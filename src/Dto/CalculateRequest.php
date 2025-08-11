@@ -7,8 +7,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class CalculateRequest
 {
-    const string ROOM_TYPE_NEW = "new";
-    const string ROOM_TYPE_SECONDARY = "secondary";
+    const string REALTY_STATUS_TYPE_NEW = "new";
+    const string REALTY_STATUS_TYPE_SECONDARY = "secondary";
 
     const string REALTY_TYPE_FLAT = "flat";
     const string REALTY_TYPE_COMMERCE = "commerce";
@@ -22,10 +22,10 @@ class CalculateRequest
         message: "Поле не может быть пустым."
     )]
     #[Assert\Choice(
-        [self::ROOM_TYPE_NEW, self::ROOM_TYPE_SECONDARY],
+        [self::REALTY_STATUS_TYPE_NEW, self::REALTY_STATUS_TYPE_SECONDARY],
         message: "Выберите вариант из списка."
     )]
-    public string $roomType;
+    public string $realtyStatusType;
     #[SerializedName('realty-type')]
     #[Assert\NotBlank(
         message: "Поле не может быть пустым."

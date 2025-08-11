@@ -30,4 +30,10 @@ class UserRepository extends ServiceEntityRepository
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
     }
+
+    public function updateFirstName(User $user, string $firstName): void
+    {
+        $user->setFirstName($firstName);
+        $this->getEntityManager()->flush();
+    }
 }

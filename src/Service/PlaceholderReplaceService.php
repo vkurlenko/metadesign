@@ -14,12 +14,12 @@ class PlaceholderReplaceService
 
     public function calculatorMessagePlaceholderReplace(Order $order, string $message)
     {
-        $search = ["realty", "square", "roomType", "repairType", "phone", "cost"];
+        $search = ["realtyType", "square", "realtyStatusType", "repairType", "phone", "cost"];
         $replace = [
-            $this->translatorService->translate($order->getPropertyType()->getName()),
+            $this->translatorService->translate($order->getRealtyType()->getName()),
             number_format($order->getSquare(), 2, '.', ' '),
-            $this->translatorService->translate($order->getRoomType()->getName()),
-            $this->translatorService->translate($order->getRepairClass()->getName()),
+            $this->translatorService->translate($order->getRealtyStatusType()->getName()),
+            $this->translatorService->translate($order->getRepairType()->getName()),
             $this->phoneFormatterService->denormalize((string)$order->getUserId()->getPhoneNumber()),
             number_format($order->getCost(), 2, '.', ' ')
         ];
