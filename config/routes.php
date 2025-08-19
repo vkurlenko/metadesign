@@ -35,6 +35,10 @@ return function (RoutingConfigurator $routes): void {
         ->controller([PageController::class, 'building'])
     ;
 
+    $routes->add('privacy', '/privacy')
+        ->controller([PageController::class, 'privacy'])
+    ;
+
     // Api
     $routes->add('calculate', '/api/calculate')
         ->controller([CalculateController::class, 'index'])
