@@ -199,4 +199,14 @@ class PageController extends AbstractController
 
         return is_array($items) ? $items : [];
     }
+
+    #[Route('/privacy')]
+    public function privacy(): Response
+    {
+        $this->vars = array_merge(
+            $this->vars,
+            ['CURRENT_PAGE' => 'privacy']
+        );
+        return $this->render('privacy.html.twig', $this->vars);
+    }
 }
