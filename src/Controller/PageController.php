@@ -13,8 +13,8 @@ class PageController extends AbstractController
      * @var array|string[]
      */
     public array $vars = [
-        'PHONE'          => '79993475090',
-        'PHONE_FORMATED' => '+7 999 347-50-90',
+        'PHONE'          => '79250024973',
+        'PHONE_FORMATED' => '+7 925 002 4973',
     ];
 
     /**
