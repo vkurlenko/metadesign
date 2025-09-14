@@ -5,16 +5,32 @@
 
 RewriteEngine on
 
+RewriteCond %{HTTP_HOST} ^www\.(.*)$
+RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
+
 RewriteCond %{ENV:HTTPS} !on
 RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-RewriteRule ^$ public/ 
-RewriteRule ^(css|js|img|fonts|icon-fonts)/(.*)$ public/$1/$2
+RewriteCond %{REQUEST_URI} ^/robots\.txt$
+RewriteCond %{DOCUMENT_ROOT}/public/robots.txt -f
+RewriteRule ^(.*)$ /public/robots.txt [L]
 
+RewriteCond %{REQUEST_URI} ^/sitemap\.xml$
+RewriteCond %{DOCUMENT_ROOT}/public/sitemap.xml -f
+RewriteRule ^(.*)$ /public/sitemap.xml [L]
+
+# Главная страница: / → public/
+RewriteRule ^$ public/ [L]
+
+# Статические ресурсы: css, js, img, fonts и т.д. — подставляем public/
+RewriteRule ^(css|js|img|fonts|icon-fonts)/(.*)$ public/$1/$2 [L]
+
+# Все остальные запросы — если файл/папка не существуют — отправляем в index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ public/index.php [L]
 
+# Перехват прямого доступа к /public/ — редирект на корень
 RewriteCond %{THE_REQUEST} ^GET\ /public/
-RewriteRule !^public/ public%{REQUEST_URI} [L]
+RewriteRule !^public/ public%{REQUEST_URI} [L,R=301]
 
