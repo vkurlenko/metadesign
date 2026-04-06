@@ -55,3 +55,54 @@ docker compose -f compose.lab4.yaml up -d --build
 ```
 
 При повторных запросах к одному URL будет меняться ответ: `Нода 1`, `Нода 2`, `Нода 3`.
+
+## Команды для защиты (по порядку)
+
+Перед запуском лабораторных:
+```bash
+cd /var/www/other/metadesign
+```
+
+### ЛР1 (ORM / Doctrine)
+```bash
+docker compose up -d --build
+docker compose exec app php bin/console doctrine:database:create --if-not-exists
+docker compose exec app php bin/console doctrine:migrations:migrate -n
+docker compose exec app php bin/console doctrine:migrations:status
+docker compose exec app php bin/console doctrine:query:sql "SELECT 1;"
+```
+
+### ЛР2 (контейнеризация)
+```bash
+cp .env.docker.example .env
+docker compose up -d --build
+docker compose ps
+curl -fsS http://localhost:8000/health
+```
+
+### ЛР3 (CI/CD)
+Локальная демонстрация CI-части:
+```bash
+docker compose up -d --build
+./scripts/functional-healthcheck-test.sh
+docker compose down -v
+```
+
+Запуск workflow в GitHub:
+```bash
+git add .github/workflows/ci-cd.yml scripts/functional-healthcheck-test.sh compose.yaml
+git commit -m "Configure CI/CD"
+git push origin <твоя-ветка>
+```
+
+Запуск CD (сборка и push в GHCR) выполняется при push в `main` или `master`:
+```bash
+git push origin main
+```
+
+### ЛР4 (балансировка round-robin)
+```bash
+docker compose -f compose.lab4.yaml up -d --build
+for i in {1..6}; do curl -s http://localhost:8081; echo; done
+docker compose -f compose.lab4.yaml down -v
+```
