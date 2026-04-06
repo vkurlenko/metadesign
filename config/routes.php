@@ -2,6 +2,7 @@
 
 use App\Controller\Api\CalculateController;
 use App\Controller\Api\FeedbackController;
+use App\Controller\HealthController;
 use App\Controller\PageController;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
@@ -37,6 +38,10 @@ return function (RoutingConfigurator $routes): void {
 
     $routes->add('privacy', '/privacy')
         ->controller([PageController::class, 'privacy'])
+    ;
+
+    $routes->add('health', '/health')
+        ->controller([HealthController::class, 'index'])
     ;
 
     // Api

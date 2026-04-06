@@ -1,0 +1,29 @@
+services:
+  node1:
+    build:
+      context: ./lab4/node-app
+    environment:
+      NODE_NAME: "Нода 1"
+
+  node2:
+    build:
+      context: ./lab4/node-app
+    environment:
+      NODE_NAME: "Нода 2"
+
+  node3:
+    build:
+      context: ./lab4/node-app
+    environment:
+      NODE_NAME: "Нода 3"
+
+  nginx-lb:
+    image: nginx:1.27-alpine
+    ports:
+      - "8081:80"
+    depends_on:
+      - node1
+      - node2
+      - node3
+    volumes:
+      - ./lab4/nginx-lb/default.conf:/etc/nginx/conf.d/default.conf:ro

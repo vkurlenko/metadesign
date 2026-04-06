@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>${NODE_NAME}</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: sans-serif;
+      background: #f4f4f4;
+    }
+    h1 {
+      font-size: 48px;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+<h1>${NODE_NAME}</h1>
+</body>
+</html>

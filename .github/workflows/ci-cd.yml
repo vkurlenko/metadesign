@@ -1,0 +1,68 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+
+env:
+  APP_ENV: prod
+  APP_SECRET: ${{ secrets.APP_SECRET }}
+  POSTGRES_VERSION: ${{ vars.POSTGRES_VERSION }}
+  POSTGRES_DB: ${{ vars.POSTGRES_DB }}
+  POSTGRES_USER: ${{ vars.POSTGRES_USER }}
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set default vars for CI if GitHub vars are empty
+        run: |
+          echo "POSTGRES_VERSION=${POSTGRES_VERSION:-16}" >> "$GITHUB_ENV"
+          echo "POSTGRES_DB=${POSTGRES_DB:-app}" >> "$GITHUB_ENV"
+          echo "POSTGRES_USER=${POSTGRES_USER:-app}" >> "$GITHUB_ENV"
+          echo "POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-app_password}" >> "$GITHUB_ENV"
+          echo "APP_SECRET=${APP_SECRET:-ci_secret}" >> "$GITHUB_ENV"
+
+      - name: Build and start containers
+        run: docker compose up -d --build
+
+      - name: Functional health test
+        run: ./scripts/functional-healthcheck-test.sh
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down -v
+
+  cd:
+    runs-on: ubuntu-latest
+    needs: ci
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push app image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/php/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository }}:latest
