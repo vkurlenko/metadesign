@@ -2,7 +2,7 @@
 
 namespace App\Dto;
 
-use Symfony\Component\Serializer\Annotation\SerializedName;
+use Symfony\Component\Serializer\Attribute\SerializedName;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class CalculateRequest
@@ -22,7 +22,7 @@ class CalculateRequest
         message: "Поле не может быть пустым."
     )]
     #[Assert\Choice(
-        [self::REALTY_STATUS_TYPE_NEW, self::REALTY_STATUS_TYPE_SECONDARY],
+        choices: [self::REALTY_STATUS_TYPE_NEW, self::REALTY_STATUS_TYPE_SECONDARY],
         message: "Выберите вариант из списка."
     )]
     public string $realtyStatusType;
@@ -31,7 +31,7 @@ class CalculateRequest
         message: "Поле не может быть пустым."
     )]
     #[Assert\Choice(
-        [self::REALTY_TYPE_FLAT, self::REALTY_TYPE_COMMERCE, self::REALTY_TYPE_HOUSE],
+        choices: [self::REALTY_TYPE_FLAT, self::REALTY_TYPE_COMMERCE, self::REALTY_TYPE_HOUSE],
         message: "Выберите вариант из списка."
     )]
     public string $realtyType;
@@ -40,7 +40,7 @@ class CalculateRequest
         message: "Поле не может быть пустым."
     )]
     #[Assert\Choice(
-        [self::REPAIR_TYPE_COMFORT, self::REPAIR_TYPE_BUSINESS, self::REPAIR_TYPE_PREMIUM],
+        choices: [self::REPAIR_TYPE_COMFORT, self::REPAIR_TYPE_BUSINESS, self::REPAIR_TYPE_PREMIUM],
         message: "Выберите вариант из списка."
     )]
     public string $repairType;
